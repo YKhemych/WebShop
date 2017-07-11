@@ -34,7 +34,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
                 .addResourceHandler("/picture/**")
                 .addResourceLocations("file:" +System.getProperty("user.home") + File.separator + "images" + File.separator);
         registry
-                .addResourceHandler("/javascript/**")
+                .addResourceHandler("/js/**")
                 .addResourceLocations("/WEB-INF/javascript/");
     }
 
@@ -44,7 +44,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
         mailSender.setUsername("yosyp0108khemych@gmail.com");
-        mailSender.setPassword("opa33yosyp");
+        mailSender.setPassword("");
         Properties properties = mailSender.getJavaMailProperties();
         properties.put("mail.transport.protocol", "smtp");
         properties.put("mail.smtp.auth", "true");

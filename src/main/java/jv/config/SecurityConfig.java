@@ -59,30 +59,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.authenticationProvider(authenticationProvider());
-//    }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
 
-//        http.authorizeRequests()
-//                .antMatchers("/").permitAll()
-//                .antMatchers("/admin/**").hasRole("ADMIN")
-//                .and()
-//                .formLogin()
-//                .loginProcessingUrl("/logMe")
-//                .successForwardUrl("/asd")
-//                .passwordParameter("password")
-//                .usernameParameter("username")
-//                .and()
-//                .csrf();
-
         http.authorizeRequests()
                 .antMatchers("/*").permitAll()
-                .antMatchers("/admin/**").hasRole("ADMIN") //!!!!!!!!!!!!!!
+                .antMatchers("/admin/**").hasRole("ADMIN")
                 .and()
                 .formLogin()
                 .loginProcessingUrl("/logMe")
