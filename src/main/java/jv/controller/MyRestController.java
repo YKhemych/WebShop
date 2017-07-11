@@ -5,9 +5,12 @@ import jv.entity.User;
 import jv.service.CategoryService;
 import jv.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * Created by user on 03.07.2017.
@@ -32,6 +35,9 @@ public class MyRestController {
         categoryService.save(jsonCategory);
     }
 
-
+    @GetMapping("/allCategory")
+    public List<Category> allCategoryes(){
+        return categoryService.findAll();
+    }
 
 }

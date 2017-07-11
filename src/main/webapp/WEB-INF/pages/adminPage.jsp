@@ -11,10 +11,10 @@
             </div>
 
 
-            <div class="col-md-2 border-red padding-0-10px">
-                <ul class="text-align-center nav nav-pills nav-stacked">
-                    <li class="border-bottom-red-1px"> <a href="">Категорії</a> </li>
-                    <li class=""> <a href=""> Слайдер </a> </li>
+            <div class="col-md-2">
+                <ul class="text-align-center nav ">
+                    <li> <button id="category" class="col-md-12 btn btn-danger margin-top-10px" >Категорії</button> </li>
+                    <li class=""> <button class="col-md-12 btn btn-danger margin-top-10px" > Слайдер </button> </li>
 
                 </ul>
 
@@ -33,9 +33,9 @@
                     <tbody>
                     <c:forEach items="${categorys}" var="category">
                         <tr>
-                            <td>${category.id}</td>
-                            <td>${category.name}</td>
-                            <td>${category.idFatherCategoryes}</td>
+                            <td class="categoryId">${category.id}</td>
+                            <td class="categoryName">${category.name}</td>
+                            <td class="idFatherCategory">${category.idFatherCategoryes}</td>
                         </tr>
                     </c:forEach>
                         <tr>
@@ -69,5 +69,5 @@
 
 
 
-<script src="/js/category.js" ></script>
+<script id="234" src="/js/category.js" ></script>
 <%@include file="template/footer.jsp"%>
