@@ -1,12 +1,23 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@include file="template/header.jsp"%>
 
-<div class="container-fluid" style="height: 1200px">
-    <div class="row centered">
+<div class="container-fluid">
+    <div class="row background-blond-grey padding-top-10px">
+        <div class="col-md-10 col-md-offset-1 max-width-">
+            <div class="slider">
+                <ul>
+                    <c:forEach items="${stockSliders}" var="stockSlider">
+                        <li><img src="${stockSlider.picture}" alt=""></li>
+                    </c:forEach>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row centered" style="height: 1000px;">
         <div class="col-md-10 col-md-offset-1">
-
             <div>
                 <h2> Головна    </h2>
 
@@ -32,5 +43,6 @@
 
 
 
+<script src="/js/stockSlider.js"></script>
 
 <%@include file="template/footer.jsp"%>
