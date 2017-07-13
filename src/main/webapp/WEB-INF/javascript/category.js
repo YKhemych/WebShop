@@ -83,7 +83,7 @@ $('#saveCategory').click(function () {
 var n = 0;
 var $bChange = $('<button/>', {id: "change", class: "btn btn-danger btn-sm",text: "Enter"});
 var $bClose = $('<button/>', {id: "close", class: "btn btn-danger btn-sm",text: "X"});
-var $tdBuff = $('<td/>');
+var $tdBuff;
 var buffText;
 
 $('td').click(function () {
@@ -103,9 +103,9 @@ $('td').click(function () {
             $(this).parent().children().last().append($bChange);
             $(this).parent().children().last().append($bClose);
 
-            $(this).empty();
-            $(this).replaceWith($tdBuff);
-            $(this).append($('<input>', {type: "text"}));
+            $tdBuff.empty();
+            $tdBuff.append($('<input>', {type: "text"}));
+
             // $(this).replaceWith("<td><input type='text'></td>");
 
 
@@ -130,7 +130,7 @@ $bClose.click(function () {
     $tdBuff.empty();
     $tdBuff.text(buffText);
     $('#buffer').remove();
-    $.getScript("/js/category.js")
+    // $.getScript("/js/category.js")
 
 
     $('#saveCategory').removeAttr("disabled");
