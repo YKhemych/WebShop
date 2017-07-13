@@ -31,7 +31,7 @@
 
 
                 <a href="/admin/adminPage"> Admin Page</a> //  "/admin/adminPage"
-                 ${categorys};
+                 <%--${categorys};--%>
                 <br>
 
 

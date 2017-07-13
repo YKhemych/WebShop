@@ -9,13 +9,14 @@ $(function () {
     });
 });
 
-$('#category').click(createCategoryTable);
-function createCategoryTable () {
+
+function createCategoryTable() {
     $('#category').attr("disabled", "true");
     var $workspace = $('#workspace');
     $workspace.empty();
 
-    $workspace.append($('<table/>', {class: "table"}));
+
+    $workspace.append($('<table/>', {class: "table table-striped"}));
     $('.table').append($('<thead/>', {class: "thead"}));
     $('.thead').append($('<tr/>', {class: "tr"}));
     $('.thead tr').append("<th>Id</th>");
@@ -37,13 +38,13 @@ function createCategoryTable () {
             });
 
             $('.tbody').append($('<tr/>', {id: result.length + 1}));
-            $("#"+(result.length + 1)).append("<td>#</td>");
-            $("#"+(result.length + 1)).append($('<td/>', {id: "thForCategoryName"}));
-            $('#thForCategoryName').append($('<input>', {id: "categoryName", type: "text", name: "categoryName"}));
-            $("#"+(result.length + 1)).append($('<td/>', {id: "thForIdFatherCategory"}));
-            $('#thForIdFatherCategory').append($('<input>', {id: "idFatherCategory", type: "text", name: "idFatherCategory"}));
+            $("#"+(result.length + 1)).append($('<td/>', {class: "categoryId", text: "#"}));
+            $("#"+(result.length + 1)).append($('<td/>', {id: "thForCategoryName", class: "categoryName"}));
+            $('#thForCategoryName').append($('<input>', {id: "categoryName", type: "text", name: "categoryName", class: ""}));
+            $("#"+(result.length + 1)).append($('<td/>', {id: "thForIdFatherCategory", class: "idFatherCategory"}));
+            $('#thForIdFatherCategory').append($('<input>', {id: "idFatherCategory", type: "text", name: "idFatherCategory", class: ""}));
             $("#"+(result.length + 1)).append($('<td/>', {id:"thForButton"}));
-            $('#thForButton').append($('<button>', {id: "saveCategory", class: "btn btn-danger",text: "Додати"}));
+            $('#thForButton').append($('<button/>', {id: "saveCategory", class: "btn btn-danger",text: "Додати"}));
 
             $.getScript("/js/category.js");
 
@@ -53,7 +54,7 @@ function createCategoryTable () {
         }
     });
 };
-
+$('#category').click(createCategoryTable);
 
 
 $('#saveCategory').click(function () {
@@ -70,27 +71,69 @@ $('#saveCategory').click(function () {
         data : jsonCategory,
         success : function () {
             alert("ok");
+            createCategoryTable();
         },
         error : function () {
             alert("!!!!");
         }
     });
-    createCategoryTable();
+
 });
 
 var n = 0;
+var $bChange = $('<button/>', {id: "change", class: "btn btn-danger btn-sm",text: "Enter"});
+var $bClose = $('<button/>', {id: "close", class: "btn btn-danger btn-sm",text: "X"});
+var $tdBuff = $('<td/>');
+var buffText;
 
 $('td').click(function () {
-    n++;
 
-    if ( n == 1){
-        console.log("hello222");
-        $(this).replaceWith("<td><input type='text'></td>");
+    if ( ($(this).attr("class").includes("categoryName") && !$(this).parent().children().first().text().includes("#"))
+        || ($(this).attr("class").includes("idFatherCategory") && !$(this).parent().children().first().text().includes("#")) ){
+        n++;
+        console.log(n);
+        if ( n==1 ){
+            $('#saveCategory').attr("disabled", "true");
+
+            $tdBuff = $(this);
+            buffText = $(this).html();
+            // console.log(buffText);
+
+            $(this).parent().append($('<td/>', {id: "buffer"}));
+            $(this).parent().children().last().append($bChange);
+            $(this).parent().children().last().append($bClose);
+
+            $(this).empty();
+            $(this).replaceWith($tdBuff);
+            $(this).append($('<input>', {type: "text"}));
+            // $(this).replaceWith("<td><input type='text'></td>");
+
+
+        }
     }
-    // var $input = $('<input>', {type: "text"});
 
-    // $(this).css("background", "red");
-
-    // var $table = $('<table/>');
-    // $table.innerHTML("")
 });
+
+$bChange.click(function () {
+    // workChange = false;
+    n=0;
+
+
+
+    $('#saveCategory').removeAttr("disabled");
+    console.log("change");
+
+});
+
+$bClose.click(function () {
+    n=0;
+    $tdBuff.empty();
+    $tdBuff.text(buffText);
+    $('#buffer').remove();
+    $.getScript("/js/category.js")
+
+
+    $('#saveCategory').removeAttr("disabled");
+    console.log("close");
+});
+

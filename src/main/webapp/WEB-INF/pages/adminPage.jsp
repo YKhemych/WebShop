@@ -22,30 +22,30 @@
 
             <div id="workspace" class="col-md-9 col-md-offset-1">
 
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Ім'я категорії</th>
-                            <th>Id бат/кат</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach items="${categorys}" var="category">
-                        <tr>
-                            <td class="categoryId">${category.id}</td>
-                            <td class="categoryName">${category.name}</td>
-                            <td class="idFatherCategory">${category.idFatherCategoryes}</td>
-                        </tr>
-                    </c:forEach>
-                        <tr>
-                            <td>#</td>
-                            <td><input id="categoryName" type="text" name="categoryName"></td>
-                            <td><input id="idFatherCategory" type="text" name="idFatherCategory"></td>
-                            <td><button id="saveCategory">Додати</button></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <%--<table class="table">--%>
+                    <%--<thead>--%>
+                        <%--<tr>--%>
+                            <%--<th>Id</th>--%>
+                            <%--<th>Ім'я категорії</th>--%>
+                            <%--<th>Id бат/кат</th>--%>
+                        <%--</tr>--%>
+                    <%--</thead>--%>
+                    <%--<tbody>--%>
+                    <%--<c:forEach items="${categorys}" var="category">--%>
+                        <%--<tr>--%>
+                            <%--<td class="categoryId">${category.id}</td>--%>
+                            <%--<td class="categoryName">${category.name}</td>--%>
+                            <%--<td class="idFatherCategory">${category.idFatherCategoryes}</td>--%>
+                        <%--</tr>--%>
+                    <%--</c:forEach>--%>
+                        <%--<tr>--%>
+                            <%--<td>#</td>--%>
+                            <%--<td><input id="categoryName" type="text" name="categoryName"></td>--%>
+                            <%--<td><input id="idFatherCategory" type="text" name="idFatherCategory"></td>--%>
+                            <%--<td><button id="saveCategory">Додати</button></td>--%>
+                        <%--</tr>--%>
+                    <%--</tbody>--%>
+                <%--</table>--%>
 
                     <%--<input id="categoryName" type="text" name="categoryName">--%>
                     <%--<input id="idFatherCategory" type="text" name="idFatherCategory">--%>
