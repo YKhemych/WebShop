@@ -22,9 +22,9 @@ import java.io.IOException;
 public class CreateController {
 
     @Autowired
-    CategoryService categoryService;
+    private CategoryService categoryService;
     @Autowired
-    StockSliderService stockSliderService;
+    private StockSliderService stockSliderService;
 
 
 //    @PostMapping("/saveCategory")

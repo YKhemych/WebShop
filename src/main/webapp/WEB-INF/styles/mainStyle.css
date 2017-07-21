@@ -8,6 +8,7 @@
     /*color: #333;*/
 /*}*/
 
+
 .navbar{
     margin-bottom: 0;
     padding-bottom: 5px;
@@ -59,6 +60,11 @@
 .border-red{
     border: 1px solid #900022;
 }
+
+.border-blond-grey{
+    border: 2px solid #f6f6f6;
+}
+
 /*Padding*/
 .padding-left-20px{
     padding-left: 20px;
@@ -68,8 +74,16 @@
     padding-top: 10px;
 }
 
+.padding-bottom-10px{
+    padding-bottom: 10px;
+}
+
 .padding-0-10px{
     padding: 0 10px;
+}
+
+.padding-10px-0{
+    padding: 10px 0;
 }
 
 .float-left{
@@ -88,6 +102,11 @@
     text-align: center;
 }
 
+.visibility-hidden{
+    visibility: hidden;
+}
+
+
 .max-width-{
     max-width: 1600px;
 }
@@ -100,8 +119,16 @@
     width: 400px;
 }
 
+.height-auto{
+    height: auto;
+}
+
 .height-100px{
     height: 100px;
+}
+
+.background-delete{
+    background: red;
 }
 
 .background-red{

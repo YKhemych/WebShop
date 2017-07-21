@@ -11,7 +11,7 @@
             </div>
 
 
-            <div class="col-md-2">
+            <div class="col-md-2 padding-bottom-10px">
                 <ul class="text-align-center nav ">
                     <li> <button id="category" class="col-md-12 btn btn-danger margin-top-10px" >Категорії</button> </li>
                     <li class=""> <button class="col-md-12 btn btn-danger margin-top-10px" > Слайдер </button> </li>
@@ -19,37 +19,7 @@
                 </ul>
 
             </div>
-
-            <div id="workspace" class="col-md-9 col-md-offset-1">
-
-                <%--<table class="table">--%>
-                    <%--<thead>--%>
-                        <%--<tr>--%>
-                            <%--<th>Id</th>--%>
-                            <%--<th>Ім'я категорії</th>--%>
-                            <%--<th>Id бат/кат</th>--%>
-                        <%--</tr>--%>
-                    <%--</thead>--%>
-                    <%--<tbody>--%>
-                    <%--<c:forEach items="${categorys}" var="category">--%>
-                        <%--<tr>--%>
-                            <%--<td class="categoryId">${category.id}</td>--%>
-                            <%--<td class="categoryName">${category.name}</td>--%>
-                            <%--<td class="idFatherCategory">${category.idFatherCategoryes}</td>--%>
-                        <%--</tr>--%>
-                    <%--</c:forEach>--%>
-                        <%--<tr>--%>
-                            <%--<td>#</td>--%>
-                            <%--<td><input id="categoryName" type="text" name="categoryName"></td>--%>
-                            <%--<td><input id="idFatherCategory" type="text" name="idFatherCategory"></td>--%>
-                            <%--<td><button id="saveCategory">Додати</button></td>--%>
-                        <%--</tr>--%>
-                    <%--</tbody>--%>
-                <%--</table>--%>
-
-                    <%--<input id="categoryName" type="text" name="categoryName">--%>
-                    <%--<input id="idFatherCategory" type="text" name="idFatherCategory">--%>
-                    <%--<button id="saveCategory">Додати</button>--%>
+            <div id="workspace" class="col-md-10 padding-bottom-10px">
 
 
                 <form action="/create/saveStockSlide" method="post" enctype="multipart/form-data">
@@ -69,5 +39,5 @@
 
 
 
-<script id="234" src="/js/category.js" ></script>
+<script src="/js/adminCategory.js" ></script>
 <%@include file="template/footer.jsp"%>

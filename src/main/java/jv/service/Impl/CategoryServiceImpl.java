@@ -23,6 +23,10 @@ public class CategoryServiceImpl implements CategoryService {
         categoryDAO.save(category);
     }
 
+    public void delete(int id) {
+        categoryDAO.delete(id);
+    }
+
     public Category findOne(int id) {
         return categoryDAO.findOne(id);
     }
@@ -30,4 +34,13 @@ public class CategoryServiceImpl implements CategoryService {
     public List<Category> findAll() {
         return categoryDAO.findAll();
     }
+
+    public void renameCategory(int id, String newName) {
+        categoryDAO.renameCategory(id, newName);
+    }
+
+    public void changeIdFatherCategory(int id, int newIdFatherCategoryes) {
+        categoryDAO.changeIdFatherCategory(id, newIdFatherCategoryes);
+    }
+
 }

@@ -5,10 +5,7 @@ import jv.entity.User;
 import jv.service.CategoryService;
 import jv.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,7 +16,7 @@ import java.util.List;
 public class MyRestController {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @PostMapping("/saveUser")
     public void saveUser(@RequestBody User jsonUser) {
@@ -27,17 +24,37 @@ public class MyRestController {
     }
 
     @Autowired
-    CategoryService categoryService;
+    private CategoryService categoryService;
 
     @PostMapping("/saveCategory")
-    public void saveCategory(@RequestBody Category jsonCategory){
-        System.out.println("hello");
-        categoryService.save(jsonCategory);
+    public void saveCategory(@RequestBody Category jsonCategorySave){
+//        System.out.println("hello");
+        categoryService.save(jsonCategorySave);
+    }
+
+    @DeleteMapping("/deleteCategory-{id}")
+    public void deleteCategory(@PathVariable("id")int deleteId){
+        System.out.println("hello delete");
+        System.out.println(deleteId);
+        categoryService.delete(deleteId);
     }
 
     @GetMapping("/allCategory")
     public List<Category> allCategoryes(){
         return categoryService.findAll();
+    }
+
+
+    @PostMapping("/changeNameCategory")//!!!!
+    public void renameCategory(@RequestBody Category jsonCategoryRename){
+        System.out.println("rename hellow");
+        categoryService.renameCategory(jsonCategoryRename.getId(), jsonCategoryRename.getName());
+    }
+
+    @PostMapping("/changeIdFatherCategory")//!!!!!!
+    public void changeIdFatherCategory(@RequestBody Category jsonCategoryChangeIDFC){
+        System.out.println("change IDFC hellow");
+//        categoryService.changeIdFatherCategory(jsonCategoryChangeIDFC.getId(), jsonCategoryChangeIDFC.getIdFatherCategoryes());
     }
 
 }

@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MainController {
 
     @Autowired
-    CategoryService categoryService;
+    private CategoryService categoryService;
     @Autowired
-    StockSliderService stockSliderService;
+    private StockSliderService stockSliderService;
 
 
     @Autowired
@@ -29,7 +29,6 @@ public class MainController {
 
     @GetMapping("/")
     public String index(Model model){
-        model.addAttribute("categorys", categoryService.findAll());
         model.addAttribute("stockSliders", stockSliderService.findAll());
 //        logger.trace("url is : /");
 //        logger.debug("debug method work");
@@ -42,7 +41,6 @@ public class MainController {
 
     @GetMapping("/admin/adminPage")
     public String adminPage(Model model){
-        model.addAttribute("categorys", categoryService.findAll());
         return "adminPage";
     }
 
