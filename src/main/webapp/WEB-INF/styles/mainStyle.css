@@ -37,6 +37,10 @@
     margin: 10px 0px;
 }
 
+.margin-0-10{
+    margin: 0 10px;
+}
+
 .margin-left-20px{
     margin-left: 20px;
 }
@@ -127,6 +131,10 @@
     height: 100px;
 }
 
+.height-200px{
+    height: 200px;
+}
+
 .background-delete{
     background: red;
 }
@@ -145,6 +153,10 @@
 
 .background-blond-grey{
     background: #dadada;
+}
+
+.color-red{
+    color: #900022;
 }
 
 .color-blue{

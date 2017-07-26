@@ -2,35 +2,35 @@
  * Created by user on 14.07.2017.
  */
 
-var n = 0;
-var $bChange = $('<button/>', {id: "change", class: "btn btn-danger btn-sm",text: "Enter"});
-var $bClose = $('<button/>', {id: "closeChange", class: "btn btn-danger btn-sm",text: "X"});
-var $tdBuff;
-var buffText;
+var catN = 0;
+var $bCategoryChange = $('<button/>', {id: "change", class: "btn btn-danger btn-sm",text: "Enter"});
+var $bCategoryClose = $('<button/>', {id: "closeChange", class: "btn btn-danger btn-sm",text: "X"});
+var $tdCategoryBuff;
+var buffTextCategory;
 var deleteCategoryArr = [];
 var lenghtCategoryArr = deleteCategoryArr.length;
 
 
-$('td').click(function () {
-    if ( Edit == true && Delete == false ) {
+$('#categoryDiv td').click(function () {
+    if ( EditCategory == true && DeleteCategory == false ) {
 
         if (($(this).attr("class").includes("categoryName") && !$(this).parent().children().first().text().includes("#"))
             || ($(this).attr("class").includes("idFatherCategory") && !$(this).parent().children().first().text().includes("#"))) {
-            n++;
+            catN++;
             // console.log(n);
-                if (n == 1) {
+                if (catN == 1) {
                     $('#saveCategory').attr("disabled", "true");
 
-                    $tdBuff = $(this);
-                    buffText = $(this).html();
+                    $tdCategoryBuff = $(this);
+                    buffTextCategory = $(this).html();
                     // console.log(buffText);
 
-                    $(this).parent().append($('<td/>', {id: "buffer"}));
-                    $(this).parent().children().last().append($bChange);
-                    $(this).parent().children().last().append($bClose);
+                    $(this).parent().append($('<td/>', {id: "bufferCategory"}));
+                    $(this).parent().children().last().append($bCategoryChange);
+                    $(this).parent().children().last().append($bCategoryClose);
 
-                    $tdBuff.empty();
-                    $tdBuff.append($('<input>', {id: "newNameCategory", type: "text"}));
+                    $tdCategoryBuff.empty();
+                    $tdCategoryBuff.append($('<input>', {id: "newNameCategory", type: "text"}));
 
                     $.getScript("/js/category/categoryTableEdit.js");
                     // $(this).replaceWith("<td><input type='text'></td>");
@@ -39,7 +39,7 @@ $('td').click(function () {
             }
 
     }
-    if ( Edit == false && Delete == true ) {
+    if ( EditCategory == false && DeleteCategory == true ) {
         if (!$(this).parent().children().first().text().includes("#")){
             if(!deleteCategoryArr.includes($(this).parent().children().first().text())){
                 console.log(lenghtCategoryArr);
@@ -89,7 +89,7 @@ $('#saveCategory').click(function () {
 });
 
 function closeCategoryDiv() {
-    $('#workspace').empty();
+    $('#categoryDiv').remove();
     $('#category').removeAttr("disabled");
     deleteCategoryArr = [];
     lenghtCategoryArr = 0;
@@ -98,35 +98,35 @@ function closeCategoryDiv() {
 $('#closeCategoryDiv').click(closeCategoryDiv);
 
 
-var Edit= false;
-var Delete= false;
+var EditCategory= false;
+var DeleteCategory= false;
 
 $("#markToEditCategory").click(function () {
     for (var i = 0; i < deleteCategoryArr.length; i++) {
         if (deleteCategoryArr[i] != null){
-            $('#' + deleteCategoryArr[i]).removeClass("background-delete");
+            $('#' + "categ" + deleteCategoryArr[i]).removeClass("background-delete");
         }
     }
     deleteCategoryArr = [];
     lenghtCategoryArr = 0;
     $('#markToEditCategory').attr("disabled", "true");
     $('#markToDeleteCategory').removeAttr("disabled");
-    Edit = true;
-    Delete = false;
+    EditCategory = true;
+    DeleteCategory = false;
     $('#confirmationDeleteCategory').addClass("visibility-hidden");
 });
 $("#markToDeleteCategory").click(function () {
     $('#markToDeleteCategory').attr("disabled", "true");
     $('#markToEditCategory').removeAttr("disabled");
-    Edit = false;
-    Delete = true;
+    EditCategory = false;
+    DeleteCategory = true;
     $('#confirmationDeleteCategory').removeClass("visibility-hidden");
 
 });
 
 
 $('#confirmationDeleteCategory').click(function () {
-    var buff=0;
+    // var buffCategory=0;
     for (var i = 0; i < deleteCategoryArr.length; i++) {
         if (deleteCategoryArr[i] != null){
             var url = "/deleteCategory-" + deleteCategoryArr[i];
@@ -135,7 +135,7 @@ $('#confirmationDeleteCategory').click(function () {
                 url: url,
                 type: 'delete',
                 success : function () {
-                    closeCategoryDiv();
+                    // closeCategoryDiv();
                     createCategoryTable();
                 },
                 error : function () {

@@ -23,6 +23,14 @@ public class StockSliderServiceImpl implements StockSliderService {
         stockSliderDAO.save(stockSlider);
     }
 
+    public void delete(int id) {
+        stockSliderDAO.delete(id);
+    }
+
+    public void changeNewNameSlide(int id, String newName) {
+        stockSliderDAO.changeNewNameSlide(id, newName);
+    }
+
     public StockSlider findOne(int id) {
         return stockSliderDAO.findOne(id);
     }

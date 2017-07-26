@@ -14,7 +14,7 @@
             <div class="col-md-2 padding-bottom-10px">
                 <ul class="text-align-center nav ">
                     <li> <button id="category" class="col-md-12 btn btn-danger margin-top-10px" >Категорії</button> </li>
-                    <li class=""> <button class="col-md-12 btn btn-danger margin-top-10px" > Слайдер </button> </li>
+                    <li> <button id="mainSlider" class="col-md-12 btn btn-danger margin-top-10px" > Слайдер </button> </li>
 
                 </ul>
 

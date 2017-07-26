@@ -22,7 +22,19 @@ public class User implements UserDetails{
     private String username;
     private String password;
     private String email;
+
+    private String name;
+    private String surname;
+    private String country;
+    private String city;
+    private String street;
+    private int zipCode;
     private String phone;
+
+
+
+
+
     @OneToMany(fetch =FetchType.LAZY, mappedBy = "user")
     private List<Comment> comments;
 

@@ -22,17 +22,9 @@ import java.io.IOException;
 public class CreateController {
 
     @Autowired
-    private CategoryService categoryService;
-    @Autowired
     private StockSliderService stockSliderService;
 
 
-//    @PostMapping("/saveCategory")
-//    public String saveCategory(@RequestParam String categoryName){
-//        System.out.println("gffhjhk");
-////        categoryService.save();
-//        return "redirect:/admin/adminPage";
-//    }
 
 
     @PostMapping("/saveStockSlide")

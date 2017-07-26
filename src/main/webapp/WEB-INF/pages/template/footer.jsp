@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
-<div class="container-fluid border-top-red background-dark-grey">
+<div class="container-fluid border-top-red background-dark-grey margin-top-10px">
     <div class="row centered color-white margin-bottom-50px margin-top-50px">
         <div class="col-md-10 col-md-offset-1 row">
             <div class="margin-bottom-50px">

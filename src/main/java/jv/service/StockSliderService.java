@@ -9,6 +9,8 @@ import java.util.List;
  */
 public interface StockSliderService {
     void save(StockSlider stockSlider);
+    void delete(int id);
+    void changeNewNameSlide(int id, String newName);
     StockSlider findOne(int id);
     List<StockSlider> findAll();
 }

@@ -14,4 +14,6 @@ public interface UserService {
     User findOne(int id);
     List<User> findAll();
     public UserDetails loadUserByUsername(String username);
+    void editDeliveryAddress(String username, String name, String surname, String country,
+                             String city, String street, int zipCode, String phone);
 }

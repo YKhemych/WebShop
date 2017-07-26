@@ -1,19 +1,19 @@
 /**
  * Created by user on 14.07.2017.
  */
-$bChange.click(function () {
+$bCategoryChange.click(function () {
     // workChange = false;
-    n=0;
+    catN=0;
     console.log("change");
-    var newText = $tdBuff.children().val();
+    var newTextCategory = $tdCategoryBuff.children().val();
 
-    if ($tdBuff.attr("class").includes("categoryName")){
-        var id = $tdBuff.parent().children().first().html();
-        var name = newText;
-        var idFatherCategory = $tdBuff.parent().children().eq(2).html();
+    if ($tdCategoryBuff.attr("class").includes("categoryName")){
+        var id = $tdCategoryBuff.parent().children().first().html();
+        var name = newTextCategory;
+        var idFatherCategory = $tdCategoryBuff.parent().children().eq(2).html();
         var category = {id: id,name: name, idFatherCategoryes: idFatherCategory};
         var jsonCategoryRename = JSON.stringify(category);
-        $.ajax({//!!!!
+        $.ajax({
             url: '/changeNameCategory',
             type: 'post',
             contentType: 'application/json',
@@ -26,13 +26,13 @@ $bChange.click(function () {
             }
         });
     }else{
-        var id = $tdBuff.parent().children().first().html();
-        var name = $tdBuff.parent().children().eq(1).html();
-        var idFatherCategory = newText;
+        var id = $tdCategoryBuff.parent().children().first().html();
+        var name = $tdCategoryBuff.parent().children().eq(1).html();
+        var idFatherCategory = newTextCategory;
         var category = {id: id,name: name, idFatherCategoryes: idFatherCategory};
         console.log(category);
         var jsonCategoryChangeIDFC = JSON.stringify(category);
-        $.ajax({//!!!
+        $.ajax({
             url: '/changeIdFatherCategory',
             type: 'post',
             contentType: 'application/json',
@@ -46,17 +46,17 @@ $bChange.click(function () {
         });
     };
 
-    $('#buffer').remove();
+    $('#bufferCategory').remove();
     $('#saveCategory').removeAttr("disabled");
-    $tdBuff.empty();
-    $tdBuff.text(newText);
+    $tdCategoryBuff.empty();
+    $tdCategoryBuff.text(newTextCategory);
 });
 
-$bClose.click(function () {
-    n=0;
-    $tdBuff.empty();
-    $tdBuff.text(buffText);
-    $('#buffer').remove();
+$bCategoryClose.click(function () {
+    catN=0;
+    $tdCategoryBuff.empty();
+    $tdCategoryBuff.text(buffTextCategory);
+    $('#bufferCategory').remove();
     $('#saveCategory').removeAttr("disabled");
     console.log("close");
 });
