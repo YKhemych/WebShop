@@ -13,8 +13,7 @@ var lenghtSliderArr = deleteSliderArr.length;
 $('#sliderDiv td').click(function () {
     if ( EditSlider == true && DeleteSlider == false ) {
 
-        if (($(this).attr("class").includes("slideName") && !$(this).parent().children().first().text().includes("#"))
-            || ($(this).attr("class").includes("slidePicture") && !$(this).parent().children().first().text().includes("#"))) {
+        if (($(this).attr("class").includes("slideName") && !$(this).parent().children().first().text().includes("#"))) {
             slideN++;
             // console.log(n);
             if (slideN == 1) {
@@ -36,7 +35,7 @@ $('#sliderDiv td').click(function () {
                 }
 
 
-                // $.getScript("/js/category/categoryTableEdit.js");     ?????
+                $.getScript("/js/slider/sliderTableEdit.js");
                 // $(this).replaceWith("<td><input type='text'></td>");
 
             }
@@ -69,28 +68,8 @@ $('#sliderDiv td').click(function () {
 
 
 
-$('#saveSlide').click(function () { //!!!!!!!!!!!!!!!!!
-    console.log("hello111");
-    var slideName = $('#slideName').val();
-    var slidePicture = $('#slidePicture').ob
-    // var stockSlider = {name: slideName, picture: slidePicture};
-    // var jsonSlideSave = JSON.stringify(stockSlider);
-    console.log(slidePicture);
-
-
-    $.ajax({
-        url: '/saveSlide-' + slideName,
-        type: 'post',
-        contentType: 'multipart/form-data',
-        data : slidePicture,
-        success : function () {
-            alert("ok");
-            createSliderTable();
-        },
-        error : function () {
-            alert("!!!!");
-        }
-    });
+$('#saveSlide').click(function () {
+    $('#formForSaveSlide').submit();
 
 });
 
@@ -132,7 +111,6 @@ $("#markToDeleteSlider").click(function () {
 
 
 $('#confirmationDeleteSlide').click(function () {
-    // var buffCategory=0;
     for (var i = 0; i < deleteSliderArr.length; i++) {
         if (deleteSliderArr[i] != null){
             var url = "/deleteSlide-" + deleteSliderArr[i];
@@ -141,7 +119,6 @@ $('#confirmationDeleteSlide').click(function () {
                 url: url,
                 type: 'delete',
                 success : function () {
-                    // closeSliderDiv();
                     createSliderTable();
                 },
                 error : function () {

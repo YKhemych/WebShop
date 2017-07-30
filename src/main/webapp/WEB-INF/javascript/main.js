@@ -15,21 +15,29 @@ $('#registerButton').click(function () {
     var username = $('#regUsername').val();
     var email = $('#regEmail').val();
     var password = $('#regPassword').val();
-    var user = {username: username, email: email, password: password};
-    var jsonUser = JSON.stringify(user);
+    var confPassword = $('#conPassword').val();
+    if (password == confPassword){
+        var user = {username: username, email: email, password: password};
+        var jsonUser = JSON.stringify(user);
 
-    $.ajax({
-        url: '/saveUser',
-        type: 'post',
-        contentType: 'application/json',
-        data : jsonUser,
-        success : function () {
-            alert("ok");
-        },
-        error : function () {
-            alert("!!!!");
-        }
-    });
+        $.ajax({
+            url: '/saveUser',
+            type: 'post',
+            contentType: 'application/json',
+            data : jsonUser,
+            success : function () {
+                alert("ok");
+                document.getElementById("closeRegistration").click();
+            },
+            error : function () {
+                alert("!!!!");
+            }
+        });
+
+    }else {
+        $('#divRegistrationUser').append($('<p/>', {class: "padding-left-20px", text: "Помилка в паролі"}));
+    }
+
 });
 
 $('#loginButton').click(function () {

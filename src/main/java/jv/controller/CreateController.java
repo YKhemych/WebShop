@@ -29,15 +29,14 @@ public class CreateController {
 
     @PostMapping("/saveStockSlide")
     public String saveBlog(@RequestParam String slideName,
-                           @RequestParam MultipartFile picture
+                           @RequestParam MultipartFile slidePicture
     ) throws IOException {
-
         String realPath = System.getProperty("user.home") + File.separator + "images" + File.separator;
-        picture.transferTo(new File(realPath + picture.getOriginalFilename()));
+        slidePicture.transferTo(new File(realPath + slidePicture.getOriginalFilename()));
         StockSlider stockSlider = StockSlider
                 .builder()
                 .name(slideName)
-                .picture("/picture/" + picture.getOriginalFilename())
+                .picture("/picture/" + slidePicture.getOriginalFilename())
                 .build();
         stockSliderService.save(stockSlider);
         return "redirect:/admin/adminPage";

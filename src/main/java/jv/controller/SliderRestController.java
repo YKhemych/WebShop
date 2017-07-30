@@ -19,24 +19,13 @@ public class SliderRestController {
     @Autowired
     private StockSliderService stockSliderService;
 
-    @PostMapping("/saveSlide-{name}")//?????????????
-    public void saveSlide(@PathVariable("name") String slideName, @RequestParam MultipartFile picture) throws IOException{
-//        String realPath = System.getProperty("user.home") + File.separator + "images" + File.separator;
-//        picture.transferTo(new File(realPath + picture.getOriginalFilename()));
-//        StockSlider stockSlider = StockSlider
-//                .builder()
-//                .name(slideName)
-//                .picture("/picture/" + picture.getOriginalFilename())
-//                .build();
-//        System.out.println("DSGfgnhjk.");
-//        System.out.println();
-//        stockSliderService.save(stockSlider);
+    @PostMapping("/changeNameSlide-{id}")
+    public void changeNameSlide(@PathVariable("id") int id, @RequestBody String name){
+        stockSliderService.changeNewNameSlide(id, name);
     }
 
     @DeleteMapping("/deleteSlide-{id}")
     public void deleteSlide(@PathVariable("id")int deleteId){
-//        System.out.println("hello delete");
-//        System.out.println(deleteId);
         stockSliderService.delete(deleteId);
     }
 

@@ -9,26 +9,6 @@ $(function () {
     });
 });
 
-// var Edit= false;
-// var Delete= false;
-//
-// $("#markToEditCategory").click(function () {
-//     $('#markToEditCategory').attr("disabled", "true");
-//     $('#markToDeleteCategory').removeAttr("disabled");
-//     Edit = true;
-//     Delete = false;
-//     $('#confirmationDeleteCategory').addClass("visibility-hidden");
-// });
-// $("#markToDeleteCategory").click(function () {
-//     $('#markToDeleteCategory').attr("disabled", "true");
-//     $('#markToEditCategory').removeAttr("disabled");
-//     Edit = false;
-//     Delete = true;
-//     // $("#moreFunction").append($('<button/>', {id: "confirmationDelete", class: "btn btn-danger",text: "Підтвердити видалення"}));
-//     $('#confirmationDeleteCategory').removeClass("visibility-hidden");
-//
-// });
-
 //                                      ---Category---
 
 function createCategoryTable() {
@@ -103,6 +83,9 @@ function createSliderTable() {
 
 
     $workspace.append($('<div/>',{id:"sliderDiv", class: "row margin-top-10px padding-top-10px border-blond-grey"}));
+        // $('#sliderDiv').append($('<form/>', {id: "formForSaveSlide", action: "/create/saveStockSlide", method: "post", enctype: "multipart/form-data"/*, class: "visibility-hidden"*/}));
+            // $('#formForSaveSlide').append($('<input>', {type: "hidden", name: ${_csrf.parameterName}, value: ${_csrf.token}}));
+
         $('#sliderDiv').append($('<div/>', {id:"sliderFunction", class: "col-md-11"}));
 
             $('#sliderFunction').append($('<div/>',{id:"mainSliderFunction", class: "btn-group float-left padding-0-10px"}));
@@ -139,14 +122,16 @@ function createSliderTable() {
                     $("#"+ "slide" + this.id + " .slidePicture").append($('<img>', {src: `${this.picture}`, class: "height-200px width-400px"}))
                     lastId = this.id;
                 });
+
                 $('#sliderTbody').append($('<tr/>',{id:"slide" + (lastId + 1)}));
-                    $("#"+ "slide" + (lastId +1)).append($('<td/>',{class: "slideId", text: "#"}));
+                    // $("#"+ "slide"+ (lastId + 1)).append($('<form/>', {id: "formForSaveSlide", action: "/create/saveStockSlide", method: "post", enctype: "multipart/form-data"}));
+                    $("#"+ "slide" + (lastId +1)).append($('<td/>',{class: "slideId", text: "#"}))
                     $("#"+ "slide" + (lastId + 1)).append($('<td/>',{id: "thForSlideName", class: "slideName"}));
-                        $('#thForSlideName').append($('<input>',{id: "slideName", type: "text", name: "slideName", class: ""}));
+                        $('#thForSlideName').append($('<input>',{id: "slideName", type: "text", name: "slideName", class: "", form: "formForSaveSlide"}));
                     $("#"+ "slide" + (lastId + 1)).append($('<td/>',{id: "thForSlidePicture", class: "slidePicture"}));
-                        $('#thForSlidePicture').append($('<input>',{id: "slidePicture", type: "file", name: "slidePicture", class: ""}));
+                        $('#thForSlidePicture').append($('<input>',{id: "slidePicture", type: "file", name: "slidePicture", class: "", form: "formForSaveSlide"}));
                     $("#"+ "slide" + (lastId + 1)).append($('<td/>',{id:"thForSliderButton",  class: ""}));
-                        $('#thForSliderButton').append($('<button/>',{id: "saveSlide", class: "btn btn-danger",text: "Додати"}));
+                        $('#thForSliderButton').append($('<button/>',{id: "saveSlide", class: "btn btn-danger", text: "Додати"}));
 
                 // $('#categoryDiv').append($('<script>', {src: "/js/category/categoryEdit.js"}));
                 $.getScript("/js/slider/sliderEdit.js");

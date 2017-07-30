@@ -21,11 +21,7 @@
             </div>
             <div id="workspace" class="col-md-10 padding-bottom-10px">
 
-
-                <form action="/create/saveStockSlide" method="post" enctype="multipart/form-data">
-                    <input type="text" name="slideName">
-                    <input type="file" name="picture">
-                    <input type="submit">
+                <form id="formForSaveSlide" action="/create/saveStockSlide" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                 </form>
 
