@@ -25,7 +25,6 @@
             </div>
         </c:forEach>
     </div>
-    <!-- Навигация для карусели -->
     <a class="carousel-control left" href="#myCarousel" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left color-red"></span>
     </a>

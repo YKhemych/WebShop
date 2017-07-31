@@ -57,10 +57,15 @@ public class MainController {
     }
 
     @GetMapping("/productsWithCategory-{id}")
-    public String productsPage(@PathVariable("id")int id, Model model){
-        return "productsPage";
+    public String listProductsPage(@PathVariable("id")int id, Model model){
+        model.addAttribute("category" ,categoryService.findOne(id));
+        return "listProductsPage";
     }
 
+    @GetMapping("/admin/productPage")
+    public String adminProductPage(Model model){
+        return "productPage";
+    }
 
 
 

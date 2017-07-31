@@ -50,8 +50,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                                 AuthenticationProvider provider) throws Exception {
 
         inMemoryConfigurer()
-                .withUser("a")
-                .password("a")
+                .withUser("admin")
+                .password("admin")
                 .authorities("ROLE_ADMIN")
                 .and()
                 .configure(auth);
