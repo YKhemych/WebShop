@@ -61,8 +61,10 @@ $('#mainCategoryButton').click(function () {
                     if (result[i].idFatherCategoryes == 0){
                         $('#mainCategoryMenu').append($('<li/>', {id: 'id'+`${result[i].id}`}));
                         $('#mainCategoryMenu').children().last().append($('<a/>', {
-                            href: "#",
-                            text: `${result[i].name}`
+                            href: "/productsWithCategory-" + `${result[i].id}`,
+                            class: "linkCategory",
+                            text: `${result[i].name}`,
+                            // click: linkProductCategory
                         }));
                     }
                 }
@@ -79,8 +81,9 @@ $('#mainCategoryButton').click(function () {
                             }
                             $(this).children().last().append($('<li/>', {id: 'id'+`${result[i].id}`}));
                             $(this).children().last().children().last().append($('<a/>', {
-                                href: "#",
-                                text: `${result[i].name}`
+                                href: "/productsWithCategory-" + `${result[i].id}`,
+                                text: `${result[i].name}`,
+                                // click: linkProductCategory
                             }));
                         }
                     }
@@ -100,8 +103,9 @@ $('#mainCategoryButton').click(function () {
                                 }
                                 $(this).children().last().append($('<li/>', {id: 'id'+`${result[i].id}`}));
                                 $(this).children().last().children().last().append($('<a/>', {
-                                    href: "#",
-                                    text: `${result[i].name}`
+                                    href: "/productsWithCategory-" + `${result[i].id}`,
+                                    text: `${result[i].name}`,
+                                    // click: linkProductCategory
                                 }));
                             }
                         }
@@ -116,5 +120,19 @@ $('#mainCategoryButton').click(function () {
         });
     };
 });
+
+// function linkProductCategory() {
+//     $.ajax({
+//         url: '/product',
+//         type: 'get',
+//         success : function () {
+//             alert("click ok");
+//         },
+//         error : function () {
+//             alert("!!!!");
+//         }
+//     });
+// }
+
 
 

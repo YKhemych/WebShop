@@ -26,6 +26,10 @@ public class Product {
 
     private String details;
 
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "product")
+    private OrderProduct orderProduct;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Category category;
     @OneToMany(fetch =FetchType.LAZY, mappedBy = "product")
     private List<Photo> photos;
     @OneToMany(fetch =FetchType.LAZY, mappedBy = "product")

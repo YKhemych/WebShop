@@ -1,5 +1,6 @@
 package jv.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -19,7 +20,9 @@ public class Category {
     private int id;
     private String name;
     private int idFatherCategoryes;
-
+    @JsonIgnore
+    @OneToMany(fetch =FetchType.LAZY, mappedBy = "category")
+    private List<Product> products;
 
     public Category(String name) {
         this.name = name;

@@ -33,9 +33,9 @@ public class User implements UserDetails{
 
 
 
-
-
-    @OneToMany(fetch =FetchType.LAZY, mappedBy = "user")
+    @OneToOne(cascade = CascadeType.ALL, fetch =FetchType.LAZY, mappedBy = "user")
+    private OrderProduct orderProduct;
+    @OneToMany(cascade = CascadeType.ALL, fetch =FetchType.LAZY, mappedBy = "user")
     private List<Comment> comments;
 
 
