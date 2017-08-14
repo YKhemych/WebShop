@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.QueryHints;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by user on 25.06.2017.
  */
@@ -20,5 +22,8 @@ public interface CategoryDAO extends JpaRepository<Category, Integer> {
     @Modifying
     @Query("update Category c set c.idFatherCategoryes = :newIdFatherCategoryes where c.id = :idCategory")
     void changeIdFatherCategory(@Param("idCategory")int id, @Param("newIdFatherCategoryes")int newIdFatherCategoryes);
+
+//    @Query("select * from Category c where c.idFatherCategoryes = :idFatherCategory")
+//    List<Category> findAllWithIdFatherCategory(@Param("idFatherCategory") int idFatherCategory);
 
 }

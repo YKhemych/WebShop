@@ -35,6 +35,11 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryDAO.findAll();
     }
 
+    public List<Category> findAllWithIdFatherCategory(int idFatherCategory) {
+//        return categoryDAO.findAllWithIdFatherCategory(idFatherCategory);
+        return null;
+    }
+
     public void renameCategory(int id, String newName) {
         categoryDAO.renameCategory(id, newName);
     }

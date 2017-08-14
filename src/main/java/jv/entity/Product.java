@@ -8,6 +8,8 @@ import java.util.List;
 /**
  * Created by user on 29.06.2017.
  */
+@Inheritance
+@DiscriminatorColumn
 @Entity
 @Getter
 @Setter
@@ -21,10 +23,15 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private double price;
+    private int price;
     private String maker;
 
-    private String details;
+    private String size;
+    private String color;
+    private String material;
+
+    private String description;
+    private String type;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "product")
     private OrderProduct orderProduct;

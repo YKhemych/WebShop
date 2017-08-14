@@ -30,4 +30,9 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> findAll() {
         return productDAO.findAll();
     }
+
+    public List<Product> findAllWithCategoryId(int categoryId) {
+//        return productDAO.findAllWithCategoryId(categoryId);
+        return null;
+    }
 }

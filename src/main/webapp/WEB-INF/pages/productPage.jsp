@@ -8,13 +8,14 @@
 
                 <h1>Product Page</h1>
 
-                <div class="col-md-4 col-xs-12">
-                    <img id="mainProductImage" src="">
+                <div class="col-md-5 col-xs-12 padding-top-10px padding-left-20px">
+                    <img id="mainProductImage" src="" class="border-blond-grey" style="height: 250px; width: 320px">
                 </div>
 
-                <div class="col-md-8 col-xs-12">
-
+                <div class="col-md-7 col-xs-12">
+                    <h1> Назва </h1>
                 </div>
+                <div></div>
 
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
 

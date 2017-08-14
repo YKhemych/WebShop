@@ -62,7 +62,6 @@ function createCategoryTable() {
                     $("#"+ "categ" + (lastId + 1)).append($('<td/>',{id:"thForCategoryButton",  class: ""}));
                         $('#thForCategoryButton').append($('<button/>',{id: "saveCategory", class: "btn btn-danger",text: "Додати"}));
 
-                    // $('#categoryDiv').append($('<script>', {src: "/js/category/categoryEdit.js"}));
                     $.getScript("/js/category/categoryEdit.js");
 
             },
