@@ -1,6 +1,7 @@
 package jv.service.Impl;
 
 import jv.dao.ProductDAO;
+import jv.entity.Category;
 import jv.entity.Product;
 import jv.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +32,7 @@ public class ProductServiceImpl implements ProductService {
         return productDAO.findAll();
     }
 
-    public List<Product> findAllWithCategoryId(int categoryId) {
-//        return productDAO.findAllWithCategoryId(categoryId);
-        return null;
+    public List<Product> findAllWithCategoryId(Category category) {
+        return productDAO.findAllWithCategoryId(category);
     }
 }

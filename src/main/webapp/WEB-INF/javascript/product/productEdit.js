@@ -24,6 +24,8 @@ function deleteProductPicture(obj) {
 
 $('#selectTypeProduct label').click(function () {
 
+    $('#saveProduct').removeAttr("disabled");
+
     $activeProduct = $(this);
     $('#selectTypeProduct').children().each(function () {
         $(this).removeAttr("disabled");
@@ -66,6 +68,209 @@ $('#selectTypeProduct label').click(function () {
             $('#divProductProtectionLevel').append($('<input>',
                 {id: "productProtectionLevel", type: "text", name: "productProtectionLevel", class: "padding-left-20px form-control", placeholder: "Protection level"}));
     }
+
+
+});
+
+$('#saveProduct').click(function () {
+    console.log("function Save Product");
+    var categoryId = $('#categoryIdToAddProduct').text();
+    var productName = $('#productName').val();
+    var productMaker = $('#productMaker').val();
+    var productPrice = $('#productPrice').val();
+    var productColor = $('#productColor').val();
+    var productSize = $('#productSize').val();
+    var productMaterial = $('#productMaterial').val();
+    var productType = $('#productType').val();
+    var productDescription = $('#productDescription').val();
+    if ($activeProduct.text() == "SunGlass"){
+        var productColorLeans = $('#productColorLeans').val();
+        var productProtectionLevel = $('#productProtectionLevel').val();
+    }
+    if($activeProduct.text() == "Clock") {
+        var productMechanism = $('#productMechanism').val();
+        var productGlass = $('#productGlass').val();
+        var productDialType = $('#productDialType').val();
+        var productWaterResistance = $('#productWaterResistance').val();
+    }
+
+    switch($activeProduct.text()){
+        case 'Bag':
+            var product =
+                {name: productName, maker: productMaker, price: productPrice, size: productColor,
+                    color: productSize, material: productMaterial, type: productType, description: productDescription};
+            var jsonProductSave = JSON.stringify(product);
+
+            $.ajax({
+                url: '/saveProductBagToCategory-' + categoryId,
+                type: 'post',
+                contentType: 'application/json',
+                data : jsonProductSave,
+                success : function () {
+                    alert("ok");
+                },
+                error : function () {
+                    alert("!!!!");
+                }
+            });
+            break;
+        case 'Wallet':
+            var product =
+                {name: productName, maker: productMaker, price: productPrice, size: productColor,
+                    color: productSize, material: productMaterial, type: productType, description: productDescription};
+            var jsonProductSave = JSON.stringify(product);
+
+            $.ajax({
+                url: '/saveProductWalletToCategory-' + categoryId,
+                type: 'post',
+                contentType: 'application/json',
+                data : jsonProductSave,
+                success : function () {
+                    alert("ok");
+                },
+                error : function () {
+                    alert("!!!!");
+                }
+            });
+            break;
+        case 'Wristband':
+            var product =
+                {name: productName, maker: productMaker, price: productPrice, size: productColor,
+                    color: productSize, material: productMaterial, type: productType, description: productDescription};
+            var jsonProductSave = JSON.stringify(product);
+
+            $.ajax({
+                url: '/saveProductWristbandToCategory-' + categoryId,
+                type: 'post',
+                contentType: 'application/json',
+                data : jsonProductSave,
+                success : function () {
+                    alert("ok");
+                },
+                error : function () {
+                    alert("!!!!");
+                }
+            });
+            break;
+        case 'Scarf':
+            var product =
+                {name: productName, maker: productMaker, price: productPrice, size: productColor,
+                    color: productSize, material: productMaterial, type: productType, description: productDescription};
+            var jsonProductSave = JSON.stringify(product);
+
+            $.ajax({
+                url: '/saveProductScarfToCategory-' + categoryId,
+                type: 'post',
+                contentType: 'application/json',
+                data : jsonProductSave,
+                success : function () {
+                    alert("ok");
+                },
+                error : function () {
+                    alert("!!!!");
+                }
+            });
+            break;
+        case 'Hat':
+            var product =
+                {name: productName, maker: productMaker, price: productPrice, size: productColor,
+                    color: productSize, material: productMaterial, type: productType, description: productDescription};
+            var jsonProductSave = JSON.stringify(product);
+
+            $.ajax({
+                url: '/saveProductHatToCategory-' + categoryId,
+                type: 'post',
+                contentType: 'application/json',
+                data : jsonProductSave,
+                success : function () {
+                    alert("ok");
+                },
+                error : function () {
+                    alert("!!!!");
+                }
+            });
+            break;
+        case 'SunGlass':
+            var product =
+                {name: productName, maker: productMaker, price: productPrice, size: productColor,
+                    color: productSize, material: productMaterial, type: productType, description: productDescription,
+                        colorLeans: productColorLeans, protectionLevel: productProtectionLevel};
+            var jsonProductSave = JSON.stringify(product);
+            console.log(jsonProductSave);
+
+            $.ajax({
+                url: '/saveProductSunGlassToCategory-' + categoryId,
+                type: 'post',
+                contentType: 'application/json',
+                data : jsonProductSave,
+                success : function () {
+                    alert("ok");
+                },
+                error : function () {
+                    alert("!!!!");
+                }
+            });
+            break;
+        case 'Gloves':
+            var product =
+                {name: productName, maker: productMaker, price: productPrice, size: productColor,
+                    color: productSize, material: productMaterial, type: productType, description: productDescription};
+            var jsonProductSave = JSON.stringify(product);
+
+            $.ajax({
+                url: '/saveProductGlovesToCategory-' + categoryId,
+                type: 'post',
+                contentType: 'application/json',
+                data : jsonProductSave,
+                success : function () {
+                    alert("ok");
+                },
+                error : function () {
+                    alert("!!!!");
+                }
+            });
+            break;
+        case 'Strap':
+            var product =
+                {name: productName, maker: productMaker, price: productPrice, size: productColor,
+                    color: productSize, material: productMaterial, type: productType, description: productDescription};
+            var jsonProductSave = JSON.stringify(product);
+
+            $.ajax({
+                url: '/saveProductStrapToCategory-' + categoryId,
+                type: 'post',
+                contentType: 'application/json',
+                data : jsonProductSave,
+                success : function () {
+                    alert("ok");
+                },
+                error : function () {
+                    alert("!!!!");
+                }
+            });
+            break;
+        case 'Clock':
+            var product =
+                {name: productName, maker: productMaker, price: productPrice, size: productColor,
+                    color: productSize, material: productMaterial, type: productType, description: productDescription,
+                        mechanism: productMechanism, glass: productGlass, dialType: productDialType, waterResistance: productWaterResistance};
+            var jsonProductSave = JSON.stringify(product);
+
+            $.ajax({
+                url: '/saveProductClockToCategory-' + categoryId,
+                type: 'post',
+                contentType: 'application/json',
+                data : jsonProductSave,
+                success : function () {
+                    alert("ok");
+                },
+                error : function () {
+                    alert("!!!!");
+                }
+            });
+            break;
+    }
+
 
 
 });

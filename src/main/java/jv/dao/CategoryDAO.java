@@ -23,7 +23,7 @@ public interface CategoryDAO extends JpaRepository<Category, Integer> {
     @Query("update Category c set c.idFatherCategoryes = :newIdFatherCategoryes where c.id = :idCategory")
     void changeIdFatherCategory(@Param("idCategory")int id, @Param("newIdFatherCategoryes")int newIdFatherCategoryes);
 
-//    @Query("select * from Category c where c.idFatherCategoryes = :idFatherCategory")
-//    List<Category> findAllWithIdFatherCategory(@Param("idFatherCategory") int idFatherCategory);
+    @Query("from Category c where c.idFatherCategoryes = :idFatherCategory")
+    List<Category> findAllWithIdFatherCategory(@Param("idFatherCategory") int idFatherCategory);
 
 }

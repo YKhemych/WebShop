@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
+import java.util.*;
 
 
 @Controller
@@ -67,26 +67,23 @@ public class MainController {
     @GetMapping("/productsWithCategory-{id}")
     public String listProductsPage(@PathVariable("id")int id, Model model){
         Category fatherCategory= categoryService.findOne(id);
-//        List<Product> productList = productService.findAllWithCategoryId(fatherCategory.getId());
-//
-//        List<Category> listCategoryFirstChild = categoryService.findAllWithIdFatherCategory(fatherCategory.getId());
-//        for (Category firstCategory:listCategoryFirstChild) {
-//            List<Product> listProductFirstChild = productService.findAllWithCategoryId(firstCategory.getId());
-//            for (Product firstProduct :listProductFirstChild) {
-//                productList.add(firstProduct);
-//            }
-//            List<Category> listCategorySecondChild = categoryService.findAllWithIdFatherCategory(firstCategory.getId());
-//            for (Category secondCategory: listCategorySecondChild) {
-//                List<Product> listProductSecondChild = productService.findAllWithCategoryId(secondCategory.getId());
-//                for (Product secondProduct :listProductSecondChild) {
-//                    productList.add(secondProduct);
-//                }
-//            }
-//        }
+               List<Product> productList = new ArrayList<Product>(productService.findAllWithCategoryId(fatherCategory));
 
 
+        List<Category> listCategoryFirstChild = new ArrayList<Category>(categoryService.findAllWithIdFatherCategory(fatherCategory.getId()));
+        for (Category firstCategory: listCategoryFirstChild) {
+            System.out.println(firstCategory.getId());
+            List<Product> listProductFirstChild = new ArrayList<Product>(productService.findAllWithCategoryId(firstCategory));
+            productList.addAll(listProductFirstChild);
+            List<Category> listCategorySecondChild = new ArrayList<Category>(categoryService.findAllWithIdFatherCategory(firstCategory.getId()));
+            for (Category secondCategory: listCategorySecondChild) {
+                List<Product> listProductSecondChild = new ArrayList<Product>(productService.findAllWithCategoryId(secondCategory));
+                productList.addAll(listProductSecondChild);
+            }
+        }
 
         model.addAttribute("fatherCategory" ,fatherCategory);
+        model.addAttribute("productList", productList);
 
         return "listProductsPage";
     }

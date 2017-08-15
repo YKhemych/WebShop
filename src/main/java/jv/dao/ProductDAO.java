@@ -1,5 +1,6 @@
 package jv.dao;
 
+import jv.entity.Category;
 import jv.entity.Product;
 import lombok.AllArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,5 +14,6 @@ import java.util.List;
  */
 public interface ProductDAO extends JpaRepository<Product, Integer> {
 
-//    @Query duct> findAllWithCategoryId(@Param("categoryId") int categoryId);
+    @Query("from Product p where p.category = :category")
+    List<Product> findAllWithCategoryId(@Param("category") Category category);
 }

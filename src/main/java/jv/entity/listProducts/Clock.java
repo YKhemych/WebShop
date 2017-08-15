@@ -1,6 +1,7 @@
 package jv.entity.listProducts;
 
 import jv.entity.Product;
+import lombok.*;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -10,6 +11,11 @@ import javax.persistence.Entity;
  */
 @Entity
 @DiscriminatorValue("Clock")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class Clock extends Product {
     private String mechanism;
     private String glass;

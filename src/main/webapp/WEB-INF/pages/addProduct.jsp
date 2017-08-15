@@ -4,7 +4,12 @@
 <div class="container-fluid">
     <div class="row centered" >
         <div class="col-md-10 col-md-offset-1 border-blond-grey">
-            <div class="row">
+            <div class="row padding-bottom-10px">
+
+                <form id="formForSaveProductPhoto" action="" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+                </form>
+                <p id="categoryIdToAddProduct" class="visibility-hidden">${categoryId}</p>
 
                 <div class="page-header padding-left-20px margin-0-10">
                     <h2>Add Product</h2>
@@ -76,7 +81,7 @@
                 </div>
 
                 <div class="padding-0-10px">
-                    <button class="btn btn-danger float-right margin-top-50px"> Додати продукт </button>
+                    <button id="saveProduct" disabled="disabled" class="btn btn-danger float-right margin-top-50px"> Додати продукт </button>
                 </div>
 
                 <sec:authorize access="hasRole('ROLE_ADMIN')">

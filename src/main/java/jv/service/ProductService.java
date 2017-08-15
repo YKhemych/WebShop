@@ -1,5 +1,6 @@
 package jv.service;
 
+import jv.entity.Category;
 import jv.entity.Product;
 
 import java.util.List;
@@ -11,5 +12,5 @@ public interface ProductService {
     void save(Product product);
     Product findOne(int id);
     List<Product> findAll();
-    List<Product> findAllWithCategoryId(int categoryId);
+    List<Product> findAllWithCategoryId(Category category);
 }
