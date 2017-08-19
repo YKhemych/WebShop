@@ -1,6 +1,7 @@
 package jv.entity;
 
 import lombok.*;
+import org.springframework.security.access.method.P;
 
 import javax.persistence.*;
 
@@ -20,10 +21,20 @@ public class OrderProduct {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int number;
+    private boolean reserved;
+    private boolean confirmed;
+    private boolean delivered;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
+    @OneToOne(cascade = CascadeType.DETACH ,fetch = FetchType.LAZY)
     private User user;
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     private Product product;
+
+    public OrderProduct(int number, User user, Product product) {
+        this.number = number;
+        this.user = user;
+        this.product = product;
+    }
 
 }

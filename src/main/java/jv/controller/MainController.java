@@ -64,29 +64,6 @@ public class MainController {
         return "redirect:/";
     }
 
-    @GetMapping("/productsWithCategory-{id}")
-    public String listProductsPage(@PathVariable("id")int id, Model model){
-        Category fatherCategory= categoryService.findOne(id);
-               List<Product> productList = new ArrayList<Product>(productService.findAllWithCategoryId(fatherCategory));
-
-
-        List<Category> listCategoryFirstChild = new ArrayList<Category>(categoryService.findAllWithIdFatherCategory(fatherCategory.getId()));
-        for (Category firstCategory: listCategoryFirstChild) {
-            System.out.println(firstCategory.getId());
-            List<Product> listProductFirstChild = new ArrayList<Product>(productService.findAllWithCategoryId(firstCategory));
-            productList.addAll(listProductFirstChild);
-            List<Category> listCategorySecondChild = new ArrayList<Category>(categoryService.findAllWithIdFatherCategory(firstCategory.getId()));
-            for (Category secondCategory: listCategorySecondChild) {
-                List<Product> listProductSecondChild = new ArrayList<Product>(productService.findAllWithCategoryId(secondCategory));
-                productList.addAll(listProductSecondChild);
-            }
-        }
-
-        model.addAttribute("fatherCategory" ,fatherCategory);
-        model.addAttribute("productList", productList);
-
-        return "listProductsPage";
-    }
 
     @GetMapping("/admin/addProductToCategory-{id}")
     public String adminAddProduct(@PathVariable("id")int categoryId, Model model){

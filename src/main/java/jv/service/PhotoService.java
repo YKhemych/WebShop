@@ -1,6 +1,7 @@
 package jv.service;
 
 import jv.entity.Photo;
+import jv.entity.Product;
 
 import java.util.List;
 
@@ -10,5 +11,6 @@ import java.util.List;
 public interface PhotoService {
     void save(Photo photo);
     Photo findOne(int id);
+    List<Photo> findAllWhereProduct(Product product);
     List<Photo> findAll();
 }

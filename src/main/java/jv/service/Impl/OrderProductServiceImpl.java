@@ -4,12 +4,16 @@ import jv.dao.OrderProductDAO;
 import jv.entity.OrderProduct;
 import jv.service.OrderProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
  * Created by user on 30.07.2017.
  */
+@Service
+@Transactional
 public class OrderProductServiceImpl implements OrderProductService {
 
     @Autowired

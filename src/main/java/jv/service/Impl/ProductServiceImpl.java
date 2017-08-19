@@ -28,6 +28,10 @@ public class ProductServiceImpl implements ProductService {
         return productDAO.findOne(id);
     }
 
+    public Product findByName(String name) {
+        return productDAO.findByName(name);
+    }
+
     public List<Product> findAll() {
         return productDAO.findAll();
     }
@@ -35,4 +39,5 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> findAllWithCategoryId(Category category) {
         return productDAO.findAllWithCategoryId(category);
     }
+
 }

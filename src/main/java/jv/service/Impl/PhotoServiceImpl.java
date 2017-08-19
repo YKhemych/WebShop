@@ -2,6 +2,7 @@ package jv.service.Impl;
 
 import jv.dao.PhotoDAO;
 import jv.entity.Photo;
+import jv.entity.Product;
 import jv.service.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,10 @@ public class PhotoServiceImpl implements PhotoService {
 
     public Photo findOne(int id) {
         return photoDAO.findOne(id);
+    }
+
+    public List<Photo> findAllWhereProduct(Product product) {
+        return photoDAO.findAllWhereProduct(product);
     }
 
     public List<Photo> findAll() {

@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 @Builder
-public class Photo {   //!!!!!!!!!!!
+public class Photo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -23,5 +23,10 @@ public class Photo {   //!!!!!!!!!!!
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Product product;
+
+    public Photo(String picture, Product product){
+        this.picture = picture;
+        this.product = product;
+    };
 
 }

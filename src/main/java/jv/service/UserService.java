@@ -12,8 +12,10 @@ import java.util.List;
 public interface UserService {
     void save(User user);
     User findOne(int id);
+    User findByName(String name);
     List<User> findAll();
     public UserDetails loadUserByUsername(String username);
     void editDeliveryAddress(String username, String name, String surname, String country,
                              String city, String street, int zipCode, String phone);
+
 }

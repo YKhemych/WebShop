@@ -22,12 +22,20 @@
 }
 
 /*Margin*/
+.margin-0{
+    margin: 0;
+}
+
 .margin-top-50px{
     margin-top: 50px;
 }
 
 .margin-top-10px{
     margin-top: 10px;
+}
+
+.margin-top-5px{
+    margin-top: 5px;
 }
 
 .margin-bottom-50px{
@@ -194,6 +202,10 @@
 
 .font-size-20px{
     font-size: 20px;
+}
+
+.font-size-25px{
+    font-size: 25px;
 }
 
 /*.product-hover :hover{*/

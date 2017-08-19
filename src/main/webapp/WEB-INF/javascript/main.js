@@ -121,18 +121,14 @@ $('#mainCategoryButton').click(function () {
     };
 });
 
-// function linkProductCategory() {
-//     $.ajax({
-//         url: '/product',
-//         type: 'get',
-//         success : function () {
-//             alert("click ok");
-//         },
-//         error : function () {
-//             alert("!!!!");
-//         }
-//     });
-// }
+$('#basketButton').click(function () {
+    if ($('#registeredUserName').text() == "null" || $('#registeredUserName').text() == ""){
+        $('#basketBody').empty();
+        $('#basketBody').append($('<p/>', {text: "Будь ласка зареєструйтесь або увійдіть"}));
+    } else {
+
+    }
+});
 
 
 

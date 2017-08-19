@@ -6,7 +6,7 @@
     <div class="modal-dialog ">
         <div class="modal-content background-dark-grey color-white">
             <div class="modal-header">
-                <button id="closeRegistration" class="close" data-dismiss="modal">х</button>
+                <button id="closeRegistration" class="close color-white" data-dismiss="modal">х</button>
                 <h4 class="modal-title">Регістрація</h4>
             </div>
 

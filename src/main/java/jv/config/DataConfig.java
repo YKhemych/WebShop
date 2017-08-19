@@ -40,6 +40,8 @@ public class DataConfig {
         hikariConfig.setConnectionTestQuery("SELECT 1");
         hikariConfig.setPoolName("springHikariCP");
 
+        hikariConfig.addDataSourceProperty("dataSource.useUnicode", "true");
+        hikariConfig.addDataSourceProperty("dataSource.characterEncoding", "utf8");
         hikariConfig.addDataSourceProperty("dataSource.cachePrepStmts", "true");
         hikariConfig.addDataSourceProperty("dataSource.prepStmtCacheSize", "250");
         hikariConfig.addDataSourceProperty("dataSource.prepStmtCacheSqlLimit", "2048");

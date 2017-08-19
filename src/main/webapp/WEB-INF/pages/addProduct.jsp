@@ -6,9 +6,6 @@
         <div class="col-md-10 col-md-offset-1 border-blond-grey">
             <div class="row padding-bottom-10px">
 
-                <form id="formForSaveProductPhoto" action="" method="post" enctype="multipart/form-data">
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-                </form>
                 <p id="categoryIdToAddProduct" class="visibility-hidden">${categoryId}</p>
 
                 <div class="page-header padding-left-20px margin-0-10">
@@ -36,6 +33,10 @@
                     <div class="col-md-3">
                         <p id="photoInfo">0 із 10</p>
                     </div>
+                    <form id="formForSaveProductPhoto" action="" method="post"
+                          enctype="multipart/form-data" accept-charset="UTF-8">
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+                    </form>
                     <div id="productPhotoArea">
 
                     </div>
@@ -44,35 +45,35 @@
                 <div id="createProductArea" class="col-md-7 col-xs-12 row padding-top-10px padding-left-20px font-size-20px">
                     <div id="divProductName" class="input-group col-md-12 margin-left-20px margin-top-10px">
                         <p class="font-size-20px input-group-addon">Назва</p>
-                        <input id="productName" type="text" name="productName" class="padding-left-20px form-control" placeholder="Name">
+                        <input id="productName" form="formForSaveProductPhoto" type="text" name="productName" class="padding-left-20px form-control" placeholder="Name">
                     </div>
                     <div id="divProductMaker" class="input-group col-md-12 margin-left-20px margin-top-10px">
                         <p class="font-size-20px input-group-addon">Виробник</p>
-                        <input id="productMaker" type="text" name="productMaker" class="padding-left-20px form-control" placeholder="Maker">
+                        <input id="productMaker" form="formForSaveProductPhoto" type="text" name="productMaker" class="padding-left-20px form-control" placeholder="Maker">
                     </div>
                     <div id="divProductPrice" class="input-group col-md-12 margin-left-20px margin-top-10px">
                         <p class="font-size-20px input-group-addon">Ціна</p>
-                        <input id="productPrice" type="text" name="productPrice" class="padding-left-20px form-control" placeholder="Price">
+                        <input id="productPrice" form="formForSaveProductPhoto" type="text" name="productPrice" class="padding-left-20px form-control" placeholder="Price">
                     </div>
                     <div id="divProductColor" class="input-group col-md-12 margin-left-20px margin-top-10px">
                         <p class="font-size-20px input-group-addon">Колір</p>
-                        <input id="productColor" type="text" name="productColor" class="padding-left-20px form-control" placeholder="Color">
+                        <input id="productColor" form="formForSaveProductPhoto" type="text" name="productColor" class="padding-left-20px form-control" placeholder="Color">
                     </div>
                     <div id="divProductSize" class="input-group col-md-12 margin-left-20px margin-top-10px">
                         <p class="font-size-20px input-group-addon">Розмір</p>
-                        <input id="productSize" type="text" name="productSize" class="padding-left-20px form-control" placeholder="Size">
+                        <input id="productSize" form="formForSaveProductPhoto" type="text" name="productSize" class="padding-left-20px form-control" placeholder="Size">
                     </div>
                     <div id="divProductMaterial" class="input-group col-md-12 margin-left-20px margin-top-10px">
                         <p class="font-size-20px input-group-addon">Матеріал</p>
-                        <input id="productMaterial" type="text" name="productMaterial" class="padding-left-20px form-control" placeholder="Material">
+                        <input id="productMaterial" form="formForSaveProductPhoto" type="text" name="productMaterial" class="padding-left-20px form-control" placeholder="Material">
                     </div>
                     <div id="divProductType" class="input-group col-md-12 margin-left-20px margin-top-10px">
                         <p class="font-size-20px input-group-addon">Тип</p>
-                        <input id="productType" type="text" name="productType" class="padding-left-20px form-control" placeholder="Type">
+                        <input id="productType" form="formForSaveProductPhoto" type="text" name="productType" class="padding-left-20px form-control" placeholder="Type">
                     </div>
                     <div id="divProductDescription" class="input-group col-md-12 margin-left-20px margin-top-10px">
                         <p class="font-size-20px input-group-addon">Опис</p>
-                        <input id="productDescription" type="text" name="productDescription" class="padding-left-20px form-control" placeholder="Description">
+                        <input id="productDescription" form="formForSaveProductPhoto" type="text" name="productDescription" class="padding-left-20px form-control" placeholder="Description">
                     </div>
 
 

@@ -21,4 +21,6 @@ public interface UserDAO extends JpaRepository<User, Integer> {
                              @Param("newZipCode")int zipCode, @Param("newPhone")String phone);
 
 
+    @Query("from User u where u.username = :name")
+    User findByName(@Param("name") String name);
 }

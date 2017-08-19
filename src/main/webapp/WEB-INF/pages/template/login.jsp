@@ -5,7 +5,7 @@
         <div class="modal-content background-dark-grey color-white">
 
             <div class="modal-header ">
-                <button class="close" data-dismiss="modal">х</button>
+                <button class="close color-white" data-dismiss="modal">х</button>
                 <h4 class="modal-title">Вхід</h4>
             </div>
 

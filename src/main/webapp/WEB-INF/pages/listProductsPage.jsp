@@ -3,14 +3,14 @@
 
 <div class="container-fluid">
     <div class="row centered" >
-        <div class="col-md-10 col-md-offset-1" style="height: 1000px;">
+        <div class="col-md-10 col-md-offset-1">
             <div class="row">
 
-                <div class="col-md-3 margin-10-0 border-right-blond-grey" style="height: 900px">
+                <div class="col-md-3 margin-10-0 border-right-blond-grey">
 
                 </div>
 
-                <div class="col-md-9 margin-top-10px row" style="height: 900px">
+                <div class="col-md-9 margin-top-10px row">
 
                     <div class="margin-left-20px padding-0-10px border-bottom-blond-grey">
                         <h1> ${fatherCategory.name} </h1>
@@ -20,8 +20,10 @@
 
                         <c:forEach items="${productList}" var="product">
                             <div class="col-xs-6 col-md-4 padding-0-10px">
-                                <a href="" class="thumbnail btn padding-0">
-                                    <img src="" class="img-responsive">
+                                <a href="/productWithId${product.id}" class="thumbnail btn padding-0">
+                                    <c:forEach items="${product.photos}" var="photo" end="0">
+                                            <img src="${photo.picture}" class="img-responsive">
+                                    </c:forEach>
                                     <div class="caption">
                                         <h3>${product.name}</h3>
                                         <p class="color-red">${product.price}</p>

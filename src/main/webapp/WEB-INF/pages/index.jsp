@@ -33,25 +33,6 @@
     </a>
 </div>
 
-
-
-
-<%--<div class="container-fluid">--%>
-    <%--<div class="row background-blond-grey padding-top-10px">--%>
-        <%--<div class="col-md-10 col-md-offset-1 max-width-">--%>
-            <%--<div class="slider">--%>
-                <%--<ul>--%>
-
-                <%--</ul>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-<%--</div>--%>
-
-
-<%--<c:forEach items="${stockSliders}" var="stockSlider">--%>
-<%--<li><img src="${stockSlider.picture}" alt=""></li>--%>
-<%--</c:forEach>--%>
 <div class="container-fluid">
     <div class="row centered" style="height: 1000px;">
         <div class="col-md-10 col-md-offset-1">
