@@ -1,5 +1,6 @@
 package jv.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.security.access.method.P;
 
@@ -25,10 +26,11 @@ public class OrderProduct {
     private boolean confirmed;
     private boolean delivered;
 
-
-    @OneToOne(cascade = CascadeType.DETACH ,fetch = FetchType.LAZY)
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.DETACH ,fetch = FetchType.LAZY)
     private User user;
-    @OneToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.DETACH ,fetch = FetchType.LAZY)
     private Product product;
 
     public OrderProduct(int number, User user, Product product) {

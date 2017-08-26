@@ -25,8 +25,8 @@
                                             <img src="${photo.picture}" class="img-responsive">
                                     </c:forEach>
                                     <div class="caption">
-                                        <h3>${product.name}</h3>
-                                        <p class="color-red">${product.price}</p>
+                                        <h4 class="">${product.name}</h4>
+                                        <p class="color-red">${product.price} грн</p>
                                     </div>
                                 </a>
                             </div>

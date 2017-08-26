@@ -1,15 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div id="basket" class="modal fade" tabindex="-1">
-    <div class="modal-dialog modal-lg">
+    <div id="modal-basket" class="modal-dialog modal-lg">
         <div class="modal-content background-dark-grey color-white">
 
             <div class="modal-header ">
-                <button class="close color-white" data-dismiss="modal">х</button>
+                <button id="closeBasket" class="close color-white" data-dismiss="modal">X</button>
                 <h4 class="modal-title">Корзина</h4>
             </div>
 
-            <div id="busketBody" class="modal-body">
-                <p>dsfdsafasfas</p>
+            <div id="basketBody" class="modal-body">
             </div>
 
             <div class="modal-footer ">
@@ -17,7 +16,7 @@
                     <h4 class="float-right">грн</h4>
                     <h4 id="priceToPay" class="color-red float-right padding-0-10px">0</h4>
                 </div>
-                <button id="loginButton" class="btn btn-danger col-md-3" data-dismiss="modal">Оплатити</button>
+                <button id="orderAProduct" class="btn btn-danger col-md-3" <%--data-dismiss="modal"--%>>Замовити</button>
             </div>
         </div>
     </div>

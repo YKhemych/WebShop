@@ -28,6 +28,10 @@ public class PhotoServiceImpl implements PhotoService {
         return photoDAO.findOne(id);
     }
 
+    public Photo findOneWhereProduct(Product product) {
+        return photoDAO.findOneWhereProduct(product);
+    }
+
     public List<Photo> findAllWhereProduct(Product product) {
         return photoDAO.findAllWhereProduct(product);
     }

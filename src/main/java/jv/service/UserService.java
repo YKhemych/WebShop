@@ -13,6 +13,7 @@ public interface UserService {
     void save(User user);
     User findOne(int id);
     User findByName(String name);
+    User findByNameWithOrder(String name);
     List<User> findAll();
     public UserDetails loadUserByUsername(String username);
     void editDeliveryAddress(String username, String name, String surname, String country,

@@ -12,6 +12,7 @@ import java.util.List;
 public interface ProductService {
     void save(Product product);
     Product findOne(int id);
+    Product findOneWithPhoto(int id);
     Product findByName(String name);
     List<Product> findAll();
     List<Product> findAllWithCategoryId(Category category);

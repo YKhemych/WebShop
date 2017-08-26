@@ -53,7 +53,7 @@ public class MainController {
         return "adminPage";
     }
 
-    @GetMapping("/user/userPage")
+    @GetMapping("/userPage")
     public String userPage(){
         return "userPage";
     }

@@ -1,5 +1,6 @@
 package jv.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -22,7 +23,6 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-//    private String dtype;
     private String name;
     private int price;
     private String maker;
@@ -34,13 +34,17 @@ public class Product {
     private String description;
     private String type;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "product")
-    private OrderProduct orderProduct;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.REMOVE ,fetch = FetchType.LAZY, mappedBy = "product")
+    private List<OrderProduct> orderProduct;
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.DETACH ,fetch = FetchType.LAZY)
     private Category category;
-    @OneToMany(fetch =FetchType.LAZY, mappedBy = "product")
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.REMOVE ,fetch =FetchType.LAZY, mappedBy = "product")
     private List<Photo> photos;
-    @OneToMany(fetch =FetchType.LAZY, mappedBy = "product")
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.REMOVE ,fetch =FetchType.LAZY, mappedBy = "product")
     private List<Comment> comments;
 
     public Product(String name, int price, String maker, String size, String color, String material, String description, String type, Category category){

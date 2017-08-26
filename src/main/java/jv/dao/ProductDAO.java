@@ -20,4 +20,7 @@ public interface ProductDAO extends JpaRepository<Product, Integer> {
 
     @Query("from Product p where p.name = :name")
     Product findByName(@Param("name") String name);
+
+    @Query("from Product p left join fetch p.photos where p.id = :id group by p.id")
+    Product findOneWithPhoto(@Param("id") int id);
 }

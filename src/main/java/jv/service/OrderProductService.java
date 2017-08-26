@@ -1,6 +1,9 @@
 package jv.service;
 
 import jv.entity.OrderProduct;
+import jv.entity.Product;
+import jv.entity.User;
+import org.springframework.security.access.method.P;
 
 import java.util.List;
 
@@ -10,6 +13,9 @@ import java.util.List;
 public interface OrderProductService {
     void save(OrderProduct orderProduct);
     OrderProduct findOne(int id);
+    OrderProduct findOneWithUserAndProduct(User user, Product product);
     List<OrderProduct> findAll();
+    List<OrderProduct> selectAllWithProduct(User user);
     void delete(int id);
+    void setReservedTrue(int id);
 }

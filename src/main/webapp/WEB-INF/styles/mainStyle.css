@@ -50,9 +50,14 @@
     margin: 0 10px;
 }
 
+.margin-0-20px{
+    margin: 0 20px;
+}
+
 .margin-left-20px{
     margin-left: 20px;
 }
+
 /*Border*/
 .border-top-red{
     border-top: 5px solid #900022;
@@ -91,6 +96,10 @@
     padding: 0;
 }
 
+.padding-left-10px{
+    padding-left: 10px;
+}
+
 .padding-left-20px{
     padding-left: 20px;
 }
@@ -127,6 +136,14 @@
     text-align: center;
 }
 
+.text-align-left{
+    text-align: left;
+}
+
+.display-block{
+    display: block;
+}
+
 .visibility-hidden{
     visibility: hidden;
 }
@@ -134,6 +151,10 @@
 
 .max-width-{
     max-width: 1600px;
+}
+
+.width-100prc{
+    width: 100%;
 }
 
 .width-200px{
@@ -206,6 +227,15 @@
 
 .font-size-25px{
     font-size: 25px;
+}
+
+.overflow-scroll{
+    overflow: scroll;
+}
+
+.overflow{
+
+    overflow: hidden;
 }
 
 /*.product-hover :hover{*/

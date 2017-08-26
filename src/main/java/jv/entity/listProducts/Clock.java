@@ -29,4 +29,5 @@ public class Clock extends Product {
         this.dialType = dialType;
         this.waterResistance = waterResistance;
     }
+
 }

@@ -15,4 +15,7 @@ public interface PhotoDAO extends JpaRepository<Photo, Integer> {
 
     @Query("from Photo p where p.product = :product")
     List<Photo> findAllWhereProduct(@Param("product") Product product);
+
+    @Query("from Photo p where p.product = :product group by p.product ")
+    Photo findOneWhereProduct(@Param("product") Product product);
 }

@@ -2,13 +2,11 @@ package jv.config;
 
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.DispatcherServlet;
 
-import javax.servlet.MultipartConfigElement;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRegistration;
+import javax.servlet.*;
 
 
 public class WebInit implements WebApplicationInitializer {
@@ -20,6 +18,13 @@ public class WebInit implements WebApplicationInitializer {
 
 //        DelegatingFilterProxy delegatingFilterProxy = new DelegatingFilterProxy();
 //        servletContext.addFilter("springSecurityFilterChain" , delegatingFilterProxy).addMappingForUrlPatterns(null,false , "/*");
+
+        FilterRegistration charEncodingFilterReg =
+                servletContext.
+                        addFilter("CharacterEncodingFilter", CharacterEncodingFilter.class);
+        charEncodingFilterReg.setInitParameter("encoding", "UTF-8");
+        charEncodingFilterReg.setInitParameter("forceEncoding", "true");
+        charEncodingFilterReg.addMappingForUrlPatterns(null, false, "/*");
 
         ServletRegistration.Dynamic registration =
                 servletContext

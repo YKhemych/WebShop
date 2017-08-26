@@ -1,5 +1,6 @@
 package jv.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -21,6 +22,7 @@ public class Photo {
     private int id;
     private String picture;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     private Product product;
 

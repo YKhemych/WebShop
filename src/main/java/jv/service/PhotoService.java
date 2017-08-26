@@ -11,6 +11,7 @@ import java.util.List;
 public interface PhotoService {
     void save(Photo photo);
     Photo findOne(int id);
+    Photo findOneWhereProduct(Product product);
     List<Photo> findAllWhereProduct(Product product);
     List<Photo> findAll();
 }

@@ -37,6 +37,10 @@ public class UserServiceImpl implements UserService,UserDetailsService {
         return userDAO.findByName(name);
     }
 
+    public User findByNameWithOrder(String name) {
+        return userDAO.findByNameWithOrder(name);
+    }
+
     public List<User> findAll() {
         return userDAO.findAll();
     }

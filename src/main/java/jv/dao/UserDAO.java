@@ -23,4 +23,9 @@ public interface UserDAO extends JpaRepository<User, Integer> {
 
     @Query("from User u where u.username = :name")
     User findByName(@Param("name") String name);
+
+    @Query("from User u left join fetch u.orderProducts where u.username = :name")
+    User findByNameWithOrder(@Param("name") String name);
+
+
 }

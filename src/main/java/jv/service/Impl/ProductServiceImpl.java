@@ -28,6 +28,10 @@ public class ProductServiceImpl implements ProductService {
         return productDAO.findOne(id);
     }
 
+    public Product findOneWithPhoto(int id) {
+        return productDAO.findOneWithPhoto(id);
+    }
+
     public Product findByName(String name) {
         return productDAO.findByName(name);
     }
