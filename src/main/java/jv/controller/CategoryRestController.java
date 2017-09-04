@@ -42,10 +42,6 @@ public class CategoryRestController {
         categoryService.changeIdFatherCategory(jsonCategoryChangeIDFC.getId(), jsonCategoryChangeIDFC.getIdFatherCategoryes());
     }
 
-//    @GetMapping("/product")
-//    public String getProduct(){
-//        return "productsPage";
-//    }
 
 
 }

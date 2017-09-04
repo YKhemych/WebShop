@@ -24,6 +24,10 @@ public class ProductServiceImpl implements ProductService {
         productDAO.save(product);
     }
 
+    public void delete(int id) {
+        productDAO.delete(id);
+    }
+
     public Product findOne(int id) {
         return productDAO.findOne(id);
     }

@@ -83,7 +83,6 @@ $('#saveProduct').click(function () {
 });
 
 function sendToMainProductImage(obj) {
-    console.log(obj);
     $('#mainProductImage').attr("src", obj.src);
     $('#mainProductImage').width($('#mainProductImage').parent().width());
 }
@@ -104,7 +103,7 @@ $('#removeOneProductToNumber').click(function () {
 $('#addProductToBasket').click(function () {
 
     if ($('#registeredUserName').text() == "null" || $('#registeredUserName').text() == ""){
-        alert("Будь ласка зареєструйтесь або увійдіть")
+        alert("Будь ласка зареєструйтесь або увійдіть");
     }else {
         var productId = $('#productId').text();
         var nameUserWhoOrderProduct = $('#registeredUserName').text();
@@ -127,4 +126,58 @@ $('#addProductToBasket').click(function () {
 $(document).ready(function () {
     $('#mainProductImage').attr("src", $('#allProductPhoto').children().first().children().children().attr("src"));
     $('#mainProductImage').width($('#mainProductImage').parent().width());
-})
+});
+
+function deleteProduct(id) {
+    $.ajax({
+        url: '/deleteProduct' + id,
+        type: 'delete',
+        success : function () {
+            alert("deleting was success");
+            history.back();
+        },
+        error : function () {
+            console.log("error deleting");
+        }
+    });
+}
+
+
+
+$('#sendComment').click(function () {
+    var text = $('#textForComment').val();
+    var productId = $('#productId').text();
+    var userName;
+    if ($('#registeredUserName').text() == "null" || $('#registeredUserName').text() == ""){
+    }else {
+        userName = $('#registeredUserName').text();
+    }
+    $('#textForComment').val(" "); // очистити !!!!!
+
+    $.ajax({
+        url: '/saveCommentFrom' + userName + 'To' + productId ,
+        type: 'post',
+        contentType: 'text/plain',
+        data : text,
+        success : function () {
+            location.reload();
+        },
+        error : function () {
+            alert("!!!!");
+        }
+    });
+
+});
+
+function deleteComment(id) {
+    $.ajax({
+        url: '/deleteComment' + id,
+        type: 'delete',
+        success : function () {
+            $('#divComment' + id).remove();
+        },
+        error : function () {
+            console.log("error deleting");
+        }
+    });
+}

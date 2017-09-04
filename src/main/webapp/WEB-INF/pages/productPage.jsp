@@ -8,12 +8,12 @@
 
                 <div class="col-md-5 col-xs-12 padding-top-10px border-right-blond-grey margin-10-0" style="height: 500px">
                     <div class="col-xs-10 col-md-10 col-md-offset-1 col-xs-offset-1 margin-bottom-50px">
-                        <img id="mainProductImage" src="" class="border-blond-grey img-responsive">
+                        <img id="mainProductImage" class="border-blond-grey img-responsive">
                     </div>
                     <div id="allProductPhoto">
                         <c:forEach items="${pictures}" var="photo">
                             <div class="col-xs-6 col-md-3">
-                                <a href="#" class="thumbnail listPhotoProduct">
+                                <a class="thumbnail listPhotoProduct">
                                     <img src="${photo.picture}" class="img-responsive" onclick="sendToMainProductImage(this)">
                                 </a>
                             </div>
@@ -23,8 +23,14 @@
                 </div>
 
                 <div id="createProductArea" class="col-md-7 col-xs-12 row padding-top-10px padding-left-20px font-size-20px">
-                    <sec:authorize access="hasRole('ROLE_ADMIN')"><h1 class="padding-left-20px">Id: ${product.id}</h1></sec:authorize>
-                    <h1 class="padding-left-20px">${product.name}</h1>
+                    <sec:authorize access="hasRole('ROLE_ADMIN')">
+                        <div class="display-block padding-bottom-10px col-md-12">
+                            <h1 class="padding-0 float-left">Id: ${product.id}</h1>
+                            <a class="btn text-danger float-right" onclick="deleteProduct(${product.id})">Видалити</a>
+                        </div>
+
+                    </sec:authorize>
+                    <h1 id="productName" class="padding-left-20px">${product.name}</h1>
                     <h5 class="padding-left-20px padding-bottom-10px border-bottom-blond-grey "> Виробник: ${product.maker}</h5>
                     <div class="col-md-12">
                         <h3 class="color-red padding-left-20px float-left col-md-4 margin-top-10px">${product.price} грн </h3>
@@ -81,7 +87,39 @@
                     </div>
                     <div class="padding-left-20px col-md-12">
                         <h3 class=" border-bottom-blond-grey padding-bottom-10px padding-left-20px"> Коментарі </h3>
+                        <div class="max-height-220px overflow-scroll-y padding-0-10px">
+                            <c:forEach items="${comments}" var="comment">
+                                <div id="divComment${comment.id}" class="col-md-12 border-bottom-blond-grey">
+                                    <div class="col-md-12 padding-0">
+                                        <p class="display-block float-left">
+                                        <c:if test="${comment.user != null}">
+                                            ${comment.user.username}
+                                        </c:if>
+                                        <c:if test="${comment.user == null}">
+                                            Anonym
+                                        </c:if>
+                                        </p>
+                                        <p class="display-block float-right">
+                                                ${comment.date}
+                                        </p>
+                                        <sec:authorize access="hasRole('ROLE_ADMIN')">
+                                            <a id="deleteComment"  class="float-right text-danger btn padding-0-10px" onclick="deleteComment(${comment.id})" > Видалити </a>
 
+                                        </sec:authorize>
+                                    </div>
+                                    <p>
+                                        ${comment.comment}
+                                    </p>
+                                </div>
+                            </c:forEach>
+                        </div>
+
+                        <div class="border-top-blond-grey padding-top-10px margin-top-10px">
+                            <textarea id="textForComment" class="col-md-8 border-red background-white padding-left-20px" maxlength="2550" wrap="soft" rows="3" placeholder="Напишіть свій коментарій..."></textarea>
+                            <span class="col-md-3 col-md-offset-1 padding-0">
+                                <button id="sendComment" class="btn btn-danger " type="button"> Відправити </button>
+                            </span>
+                        </div>
                     </div>
 
                     <p id="productId" class="padding-left-20px visibility-hidden">${product.id}</p>

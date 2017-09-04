@@ -26,6 +26,11 @@ public class ProductRestController {
     @Autowired
     private PhotoService photoService;
 
+    @DeleteMapping("/deleteProduct{id}")
+    public void deleteProduct(@PathVariable("id")int id){
+        productService.delete(id);
+    }
+
     @PostMapping("/order-{nameUser}Product{productId}-{number}")
     public void saveOrderProduct(@PathVariable("number") int numberOfProduct,@PathVariable("nameUser")String name, @PathVariable("productId")int productId){
         User user = userService.findByName(name);

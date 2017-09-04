@@ -46,6 +46,30 @@ public class User implements UserDetails{
     private boolean credentialsNonExpired = true;       //повноваження не закінчилися
     private boolean enabled = true;                     //включений
 
+
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        ArrayList<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();
+        authorities.add(new SimpleGrantedAuthority(role.name().toString()));
+        return authorities;
+    }
+
+
+    public boolean isAccountNonExpired() {
+        return accountNonExpired;
+    }
+
+    public boolean isAccountNonLocked() {
+        return accountNonLocked;
+    }
+
+    public boolean isCredentialsNonExpired() {
+        return credentialsNonExpired;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
     public User() {
     }
 
@@ -55,21 +79,6 @@ public class User implements UserDetails{
         this.email = email;
     }
 
-//    @Override
-//    public String toString() {
-//        return "User{" +
-//                "id=" + id +
-//                ", username='" + username + '\'' +
-//                ", email='" + email + '\'' +
-//                ", name='" + name + '\'' +
-//                ", surname='" + surname + '\'' +
-//                ", country='" + country + '\'' +
-//                ", city='" + city + '\'' +
-//                ", street='" + street + '\'' +
-//                ", zipCode=" + zipCode +
-//                ", phone='" + phone + '\'' +
-//                '}';
-//    }
 
 
     @Override
@@ -86,7 +95,7 @@ public class User implements UserDetails{
                 ", street='" + street + '\'' +
                 ", zipCode=" + zipCode +
                 ", phone='" + phone + '\'' +
-                ", orderProduct=" + orderProducts +
+//                ", orderProduct=" + orderProducts +
                 '}';
     }
 
@@ -118,28 +127,23 @@ public class User implements UserDetails{
         this.orderProducts = orderProducts;
     }
 
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        ArrayList<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();
-        authorities.add(new SimpleGrantedAuthority(role.name().toString()));
-        return authorities;
+    public User(String username, String password, String email, String name, String surname, String country, String city, String street, int zipCode, String phone, List<OrderProduct> orderProducts, List<Comment> comments, Role role, boolean accountNonExpired, boolean accountNonLocked, boolean credentialsNonExpired, boolean enabled) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.name = name;
+        this.surname = surname;
+        this.country = country;
+        this.city = city;
+        this.street = street;
+        this.zipCode = zipCode;
+        this.phone = phone;
+        this.orderProducts = orderProducts;
+        this.comments = comments;
+        this.role = role;
+        this.accountNonExpired = accountNonExpired;
+        this.accountNonLocked = accountNonLocked;
+        this.credentialsNonExpired = credentialsNonExpired;
+        this.enabled = enabled;
     }
-
-
-    public boolean isAccountNonExpired() {
-        return accountNonExpired;
-    }
-
-    public boolean isAccountNonLocked() {
-        return accountNonLocked;
-    }
-
-    public boolean isCredentialsNonExpired() {
-        return credentialsNonExpired;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-
 }

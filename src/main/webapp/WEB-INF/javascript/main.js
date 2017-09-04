@@ -153,8 +153,8 @@ $('#basketButton').click(function () {
                             }
                         });
 
-                        $('#basketBody').children().last().append($('<div/>', {id: "product"+ productId +"Description", class: "col-md-offset-1 col-md-5 padding-0"}));
-                        $('#basketBody').children().last().children().last().append($('<a/>', {href: "/productWithId"+ `${this.id}`, class: "text-primary btn font-size-25px", text: `${this.name}`}));
+                        $('#basketBody').children().last().append($('<div/>', {id: "product"+ productId +"Description", class: "col-md-offset-1 col-md-6 padding-0"}));
+                        $('#basketBody').children().last().children().last().append($('<a/>', {href: "/productWithId"+ `${this.id}`, class: "text-primary btn font-size-25px white-space-pre-wrap", text: `${this.name}`}));
                         $('#basketBody').children().last().children().last().append($('<p/>', {class: "text-danger font-size-20px display-block padding-left-20px", text: `${this.price}` + "грн"}));
                         $('#basketBody').children().last().append($('<div/>', {class: "col-md-offset-1 col-md-1 padding-0"}));
                         var deleteButtonId = "deleteOrderWithProduct"+ `${this.id}`;

@@ -22,10 +22,10 @@
                             <div class="col-xs-6 col-md-4 padding-0-10px">
                                 <a href="/productWithId${product.id}" class="thumbnail btn padding-0">
                                     <c:forEach items="${product.photos}" var="photo" end="0">
-                                            <img src="${photo.picture}" class="img-responsive">
+                                            <img src="${photo.picture}" class="img-responsive width-100prc">
                                     </c:forEach>
-                                    <div class="caption">
-                                        <h4 class="">${product.name}</h4>
+                                    <div class="caption display-block">
+                                        <h4 class="white-space-pre-wrap">${product.name}</h4>
                                         <p class="color-red">${product.price} грн</p>
                                     </div>
                                 </a>
@@ -45,9 +45,15 @@
                         </sec:authorize>
                     </div>
 
+                    <div class="btn-toolbar col-md-12" role="toolbar">
+                        <div class="btn-group col-md-4 col-offset-md-4 ">
+                            <button type="button" class="btn background-white color-red padding-top-10px"><span class="glyphicon glyphicon-chevron-left font-size-20px"></span></button>
+                            <button type="button" class="btn background-white color-red font-size-20px"> 1 </button>
+                            <button type="button" class="btn background-white color-red padding-top-10px"><span class="glyphicon glyphicon-chevron-right font-size-20px"></span></button>
+                        </div>
+                    </div>
+
                 </div>
-
-
 
 
 

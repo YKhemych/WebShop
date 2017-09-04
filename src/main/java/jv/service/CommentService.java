@@ -1,6 +1,7 @@
 package jv.service;
 
 import jv.entity.Comment;
+import jv.entity.Product;
 
 import java.util.List;
 
@@ -9,6 +10,8 @@ import java.util.List;
  */
 public interface CommentService {
     void save(Comment comment);
+    void delete(int id);
     Comment findOne(int id);
     List<Comment> findAll();
+    List<Comment> findAllByProduct(Product product);
 }

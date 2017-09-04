@@ -2,10 +2,12 @@ package jv.controller;
 
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import jv.entity.Category;
+import jv.entity.Comment;
 import jv.entity.Photo;
 import jv.entity.Product;
 import jv.entity.listProducts.*;
 import jv.service.CategoryService;
+import jv.service.CommentService;
 import jv.service.PhotoService;
 import jv.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,12 +38,13 @@ public class ProductController {
     private PhotoService photoService;
     @Autowired
     private CategoryService categoryService;
+    @Autowired
+    private CommentService commentService;
 
     @GetMapping("/productsWithCategory-{id}")
     public String listProductsPage(@PathVariable("id")int id, Model model){
         Category fatherCategory= categoryService.findOne(id);
         List<Product> productList = new ArrayList<Product>(productService.findAllWithCategoryId(fatherCategory));
-
 
         List<Category> listCategoryFirstChild = new ArrayList<Category>(categoryService.findAllWithIdFatherCategory(fatherCategory.getId()));
         for (Category firstCategory: listCategoryFirstChild) {
@@ -65,9 +68,12 @@ public class ProductController {
     public String getProductWithId(@PathVariable("id") int id, Model model){
         Product buff = productService.findOne(id);
         System.out.println(buff.getClass());
+        List<Comment> comment = new ArrayList<Comment>(commentService.findAllByProduct(buff));
+//        System.out.println(comment);
         model.addAttribute("DTYPE", buff.getClass());
         model.addAttribute("product", buff);
         model.addAttribute("pictures", photoService.findAllWhereProduct(buff));
+        model.addAttribute("comments",  commentService.findAllByProduct(buff));
 
         return "productPage";
     }

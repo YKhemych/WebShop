@@ -11,6 +11,7 @@ import java.util.List;
  */
 public interface ProductService {
     void save(Product product);
+    void delete(int id);
     Product findOne(int id);
     Product findOneWithPhoto(int id);
     Product findByName(String name);
