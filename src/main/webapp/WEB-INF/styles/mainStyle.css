@@ -5,15 +5,27 @@
     margin: 0;
 }
 
-/*a{*/
-    /*color: #333;*/
-/*}*/
+.select2-container--default .select2-search--inline .select2-search__field{
+    /*border-color: #900022;*/
+    /*outline-color: #900022;*/
+}
 
 
 .navbar{
     margin-bottom: 0;
     padding-bottom: 5px;
     border-bottom: 5px solid #900022;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus,
+.pagination>.active>a:hover, .pagination>.active>span,
+.pagination>.active>span:focus, .pagination>.active>span:hover{
+    background-color: #900022;
+    border-color: #900022;
+}
+
+.pagination>li>a, .pagination>li>span{
+    color: #900022;
 }
 
 
@@ -249,8 +261,7 @@
     overflow-y: scroll;
 }
 
-.overflow{
-
+.overflow-hidden{
     overflow: hidden;
 }
 

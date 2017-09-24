@@ -3,6 +3,7 @@ package jv.service;
 import jv.entity.OrderProduct;
 import jv.entity.Product;
 import jv.entity.User;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.method.P;
 
 import java.util.List;
@@ -18,4 +19,5 @@ public interface OrderProductService {
     List<OrderProduct> selectAllWithProduct(User user);
     void delete(int id);
     void setReservedTrue(int id);
+    List<OrderProduct> findPopularOrder(Pageable pageRequest);
 }

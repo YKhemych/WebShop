@@ -14,7 +14,6 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Builder
 public class OrderProduct {
 
@@ -32,6 +31,17 @@ public class OrderProduct {
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.DETACH ,fetch = FetchType.LAZY)
     private Product product;
+
+    @Override
+    public String toString() {
+        return "OrderProduct{" +
+                "id=" + id +
+                ", number=" + number +
+                ", reserved=" + reserved +
+                ", confirmed=" + confirmed +
+                ", delivered=" + delivered +
+                '}';
+    }
 
     public OrderProduct(int number, User user, Product product) {
         this.number = number;

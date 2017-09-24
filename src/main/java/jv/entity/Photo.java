@@ -14,7 +14,6 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 @Builder
 public class Photo {
     @Id
@@ -31,4 +30,11 @@ public class Photo {
         this.product = product;
     };
 
+    @Override
+    public String toString() {
+        return "Photo{" +
+                "id=" + id +
+                ", picture='" + picture + '\'' +
+                '}';
+    }
 }

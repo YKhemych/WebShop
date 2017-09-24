@@ -1,14 +1,13 @@
 package jv.controller;
 
-import jv.entity.Category;
-import jv.entity.Product;
-import jv.entity.User;
-import jv.service.CategoryService;
-import jv.service.ProductService;
-import jv.service.StockSliderService;
-import jv.service.UserService;
+import com.sun.org.apache.xpath.internal.operations.Or;
+import jv.entity.*;
+import jv.service.*;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.access.method.P;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -30,8 +29,10 @@ public class MainController {
     private StockSliderService stockSliderService;
     @Autowired
     private ProductService productService;
-
-
+    @Autowired
+    private OrderProductService orderProductService;
+    @Autowired
+    private  PhotoService photoService;
     @Autowired
     private UserService userService;
     Logger logger = Logger.getLogger(MainController.class);
@@ -39,6 +40,20 @@ public class MainController {
     @GetMapping("/")
     public String index(Model model){
         model.addAttribute("stockSliders", stockSliderService.findAll());
+        List<OrderProduct> orderProductList = new ArrayList<OrderProduct>(orderProductService.findPopularOrder(new PageRequest(0, 12)));
+        List<Product> popularProductList = new ArrayList<Product>();
+        for (OrderProduct orderProduc:orderProductList) {
+            List<Photo> photos = new ArrayList<Photo>();
+            photos.add(photoService.findOneWhereProduct(orderProduc.getProduct()));
+            orderProduc.getProduct().setPhotos(photos);
+            popularProductList.add(orderProduc.getProduct());
+        }
+        model.addAttribute("popularProducts", popularProductList);
+
+        List<Product> newProductList = new ArrayList<Product>(productService.findNewProduct(new PageRequest(0, 12)));
+        model.addAttribute("newProducts", newProductList);
+
+//        System.out.println(orderProductList);
 //        logger.trace("url is : /");
 //        logger.debug("debug method work");
 //        logger.info("was created model with name stockSliders");

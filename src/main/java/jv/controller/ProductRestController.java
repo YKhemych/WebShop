@@ -77,6 +77,13 @@ public class ProductRestController {
         orderProductService.setReservedTrue(id);
     }
 
+    @GetMapping("/allProduct")
+    public List<Product> allProduct(){
+        List<Product> productList = new ArrayList<Product>(productService.selectProduct());
+        System.out.println("allProduct to Select");
+        return productList;
+    }
+
 
 
 }

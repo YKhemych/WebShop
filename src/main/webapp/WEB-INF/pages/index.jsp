@@ -17,7 +17,7 @@
             <div class <c:if test="${n == 0}">="item active" </c:if>
             <c:if test="${n > 0}">="item" </c:if> >
                 <div class="carousel-caption" style="width: auto;">
-                    <a href="#">
+                    <a>
                         <p class="visibility-hidden">${n = n + 1} </p>
                         <img src="${stockSlider.picture}" alt="">
                     </a>
@@ -34,18 +34,47 @@
 </div>
 
 <div class="container-fluid">
-    <div class="row centered" style="height: 1000px;">
+    <div class="row centered">
         <div class="col-md-10 col-md-offset-1">
-            <div>
-                <h2> Головна    </h2>
+            <div class="col-md-12 padding-0">
+                <div class="col-md-12 padding-0">
+                    <h2 class="col-md-12 text-align-left color-red padding-10px-0 border-bottom-blond-grey"> Нові товари </h2>
+                    <div id="newProducts" class="col-md-12 padding-0" >
+                        <c:forEach items="${newProducts}" var="newProduct">
+                            <div class="col-xs-6 col-md-2 padding-0-10px">
+                                <a href="/productWithId${newProduct.id}" class="thumbnail btn padding-0">
+                                    <c:forEach items="${newProduct.photos}" var="photo" end="0">
+                                        <img src="${photo.picture}" class="img-responsive width-100prc">
+                                    </c:forEach>
+                                    <div class="caption display-block">
+                                        <h6 class="white-space-pre-wrap padding-bottom-10px margin-0">${newProduct.name}</h6>
+                                        <p class="color-red margin-0">${newProduct.price} грн</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </c:forEach>
+                    </div>
+                </div>
 
-                <sec:authorize access="hasRole('ROLE_ADMIN')">
-                    lkjskjdlkaldkasdlbgfkjlg
-                </sec:authorize>
 
-
-                <br>
-
+                <div class="col-md-12 padding-0" >
+                    <h2 class="col-md-12 text-align-left color-red padding-10px-0 border-bottom-blond-grey"> Популярні товари </h2>
+                    <div id="popularProducts" class="col-md-12 padding-0" >
+                        <c:forEach items="${popularProducts}" var="product">
+                            <div class="col-xs-6 col-md-2 padding-0-10px">
+                                <a href="/productWithId${product.id}" class="thumbnail btn padding-0">
+                                    <c:forEach items="${product.photos}" var="photo" end="0">
+                                        <img src="${photo.picture}" class="img-responsive width-100prc">
+                                    </c:forEach>
+                                    <div class="caption display-block">
+                                        <h6 class="white-space-pre-wrap">${product.name}</h6>
+                                        <p class="color-red">${product.price} грн</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </c:forEach>
+                    </div>
+                </div>
 
             </div>
 

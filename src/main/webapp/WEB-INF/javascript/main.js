@@ -61,7 +61,7 @@ $('#mainCategoryButton').click(function () {
                     if (result[i].idFatherCategoryes == 0){
                         $('#mainCategoryMenu').append($('<li/>', {id: 'id'+`${result[i].id}`}));
                         $('#mainCategoryMenu').children().last().append($('<a/>', {
-                            href: "/productsWithCategory-" + `${result[i].id}`,
+                            href: "/productsWithCategory-" + `${result[i].id}` + "-Page-0",
                             class: "linkCategory",
                             text: `${result[i].name}`,
                             // click: linkProductCategory
@@ -81,7 +81,7 @@ $('#mainCategoryButton').click(function () {
                             }
                             $(this).children().last().append($('<li/>', {id: 'id'+`${result[i].id}`}));
                             $(this).children().last().children().last().append($('<a/>', {
-                                href: "/productsWithCategory-" + `${result[i].id}`,
+                                href: "/productsWithCategory-" + `${result[i].id}` + "-Page-0",
                                 text: `${result[i].name}`,
                                 // click: linkProductCategory
                             }));
@@ -103,7 +103,7 @@ $('#mainCategoryButton').click(function () {
                                 }
                                 $(this).children().last().append($('<li/>', {id: 'id'+`${result[i].id}`}));
                                 $(this).children().last().children().last().append($('<a/>', {
-                                    href: "/productsWithCategory-" + `${result[i].id}`,
+                                    href: "/productsWithCategory-" + `${result[i].id}` + "-Page-0",
                                     text: `${result[i].name}`,
                                     // click: linkProductCategory
                                 }));
@@ -242,6 +242,87 @@ $('#orderAProduct').click(function () {
     }
 
 });
+
+$(document).ready(function () {
+    var maxHeight = 0;
+    $('#newProducts').children().each(function () {
+        if (maxHeight < $(this).height()){
+            maxHeight = $(this).height();
+        }
+    });
+    $('#newProducts').children().each(function () {
+        var difHeight = (maxHeight - $(this).height()) / 2;
+        $(this).children().children().first().css("padding-top", difHeight + "px");
+        $(this).children().children().first().css("padding-bottom", difHeight + "px");
+        $(this).height(maxHeight);
+    });
+
+    maxHeight = 0;
+    $('#popularProducts').children().each(function () {
+        if (maxHeight < $(this).height()){
+            maxHeight = $(this).height();
+        }
+    });
+    $('#popularProducts').children().each(function () {
+        var difHeight = (maxHeight - $(this).height()) / 2;
+        $(this).children().children().first().css("padding-top", difHeight + "px");
+        $(this).children().children().first().css("padding-bottom", difHeight + "px");
+        $(this).height(maxHeight);
+    });
+
+    maxHeight = 0;
+    $('#allProductsOnProductPage').children().each(function () {
+        if (maxHeight < $(this).height()){
+            maxHeight = $(this).height();
+        }
+    });
+    $('#allProductsOnProductPage').children().each(function () {
+        // var difHeight = (maxHeight - $(this).height());
+        $(this).children().children().first().css("padding-top", (maxHeight - $(this).height()) / 2 + "px");
+        $(this).children().children().first().css("padding-bottom", (maxHeight - $(this).height()) / 2 + "px");
+        $(this).height(maxHeight);
+    });
+});
+
+$(document).ready(function () {
+    $('#pagination').css("padding-left", ($('#pagination').parent().width() - $('#pagination').width()) / 2);
+});
+
+$(document).ready(function selectProduct() {
+    $('.js-example-basic-multiple').select2({
+        placeholder: "Пошук по крамниці...",
+    });
+
+    $.ajax({
+        url: '/allProduct',
+        type: 'get',
+        success : function(result){
+            var products = [];
+            var n =0;
+            $(result).each(function () {
+                products[n] ={id: "productWithId"+ this[0], text: this[1]};
+                n++;
+            });
+            $('.js-example-basic-multiple').select2({
+                placeholder: "Пошук по крамниці...",
+                data: products
+            });
+        },
+        error : function () {
+            alert("errror load Product to Select");
+        }
+    });
+});
+
+// $('#selectProductArea').click(function () {
+//     var products = [{id: 1,text: "dasfds"}, {id: 2,text: "4fvrd"}, {id: 3,text: "vreva"}, {id: 4,text: " cx"}];
+//     $('.js-example-basic-multiple').select2({
+//         data: products
+//     });
+// });
+
+
+
 
 
 

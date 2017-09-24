@@ -3,6 +3,7 @@ package jv.dao;
 import jv.entity.OrderProduct;
 import jv.entity.Product;
 import jv.entity.User;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -25,6 +26,9 @@ public interface OrderProductDAO extends JpaRepository<OrderProduct, Integer> {
     @Modifying
     @Query("update OrderProduct o set o.reserved = 1 where o.id = :id")
     void setReservedTrue(@Param("id")int id);
+
+    @Query("from OrderProduct op left join fetch op.product group by op.product order by sum(op.number) DESC")
+    List<OrderProduct> findPopularOrder(Pageable pageRequest);
 
 
 }

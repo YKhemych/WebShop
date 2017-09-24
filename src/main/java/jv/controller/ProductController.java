@@ -11,6 +11,10 @@ import jv.service.CommentService;
 import jv.service.PhotoService;
 import jv.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,25 +45,28 @@ public class ProductController {
     @Autowired
     private CommentService commentService;
 
-    @GetMapping("/productsWithCategory-{id}")
-    public String listProductsPage(@PathVariable("id")int id, Model model){
+    @GetMapping("/productsWithCategory-{id}-Page-{page}")
+    public String listProductsPage(@PathVariable("id")int id, @PathVariable("page")int page, Model model){
         Category fatherCategory= categoryService.findOne(id);
-        List<Product> productList = new ArrayList<Product>(productService.findAllWithCategoryId(fatherCategory));
+        List<Product> productList = new ArrayList<Product>(productService.findAllWithCategoryId(fatherCategory, new PageRequest(page, 20)));
 
-        List<Category> listCategoryFirstChild = new ArrayList<Category>(categoryService.findAllWithIdFatherCategory(fatherCategory.getId()));
-        for (Category firstCategory: listCategoryFirstChild) {
-            System.out.println(firstCategory.getId());
-            List<Product> listProductFirstChild = new ArrayList<Product>(productService.findAllWithCategoryId(firstCategory));
-            productList.addAll(listProductFirstChild);
-            List<Category> listCategorySecondChild = new ArrayList<Category>(categoryService.findAllWithIdFatherCategory(firstCategory.getId()));
-            for (Category secondCategory: listCategorySecondChild) {
-                List<Product> listProductSecondChild = new ArrayList<Product>(productService.findAllWithCategoryId(secondCategory));
-                productList.addAll(listProductSecondChild);
-            }
-        }
+        int maxPage = (int) Math.ceil(productService.countProductByCategory(fatherCategory) / 20 + 1);
 
+//        List<Category> listCategoryFirstChild = new ArrayList<Category>(categoryService.findAllWithIdFatherCategory(fatherCategory.getId()));
+//        for (Category firstCategory: listCategoryFirstChild) {
+//            System.out.println(firstCategory.getId());
+//            List<Product> listProductFirstChild = new ArrayList<Product>(productService.findAllWithCategoryId(firstCategory));
+//            productList.addAll(listProductFirstChild);
+//            List<Category> listCategorySecondChild = new ArrayList<Category>(categoryService.findAllWithIdFatherCategory(firstCategory.getId()));
+//            for (Category secondCategory: listCategorySecondChild) {
+//                List<Product> listProductSecondChild = new ArrayList<Product>(productService.findAllWithCategoryId(secondCategory));
+//                productList.addAll(listProductSecondChild);
+//            }
+//        }
+        model.addAttribute("maxPage", maxPage);
         model.addAttribute("fatherCategory" ,fatherCategory);
         model.addAttribute("productList", productList);
+        model.addAttribute("productPage", page);
 
         return "listProductsPage";
     }
@@ -138,7 +145,7 @@ public class ProductController {
             productService.save(product);
             buffProduct = product;
         }
-//        System.out.println(productMaker);
+//        System.out.println(productName);
 //        System.out.println(productDescription);
         savePhoto(productPictureList, buffProduct);
         return "redirect:/productsWithCategory-" + categoryId ;

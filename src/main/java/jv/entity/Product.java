@@ -16,7 +16,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+@EqualsAndHashCode
 @Builder
 public class Product {
 
@@ -59,4 +59,34 @@ public class Product {
         this.category = category;
     }
 
+//    @Override
+//    public String toString() {
+//        return "Product{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", price=" + price +
+//                ", maker='" + maker + '\'' +
+//                ", size='" + size + '\'' +
+//                ", color='" + color + '\'' +
+//                ", material='" + material + '\'' +
+//                ", description='" + description + '\'' +
+//                ", type='" + type + '\'' +
+//                ", photos=" + photos +
+//                '}';
+//    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", maker='" + maker + '\'' +
+                ", size='" + size + '\'' +
+                ", color='" + color + '\'' +
+                ", material='" + material + '\'' +
+                ", description='" + description + '\'' +
+                ", type='" + type + '\'' +
+                '}';
+    }
 }

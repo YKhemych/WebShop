@@ -6,6 +6,7 @@ import jv.entity.Product;
 import jv.entity.User;
 import jv.service.OrderProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -47,5 +48,9 @@ public class OrderProductServiceImpl implements OrderProductService {
 
     public void setReservedTrue(int id) {
         orderProductDAO.setReservedTrue(id);
+    }
+
+    public List<OrderProduct> findPopularOrder(Pageable pageRequest) {
+        return orderProductDAO.findPopularOrder(pageRequest);
     }
 }
