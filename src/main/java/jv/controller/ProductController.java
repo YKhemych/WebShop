@@ -148,7 +148,7 @@ public class ProductController {
 //        System.out.println(productName);
 //        System.out.println(productDescription);
         savePhoto(productPictureList, buffProduct);
-        return "redirect:/productsWithCategory-" + categoryId ;
+        return "redirect:/productsWithCategory-" + categoryId + "-Page-0" ;
     }
 
     @PostMapping("/saveProductSunGlassToCategory{id}")
@@ -163,7 +163,7 @@ public class ProductController {
         SunGlass product = new SunGlass(productName, productPrice, productMaker, productSize, productColor, productMaterial, productDescription, productType, productColorLeans, productProtectionLevel, category);
         productService.save(product);
         savePhoto(productPictureList, product);
-        return "redirect:/productsWithCategory-" + categoryId ;
+        return "redirect:/productsWithCategory-" + categoryId + "-Page-0";
     }
 
     @PostMapping("/saveProductClockToCategory{id}")
@@ -179,7 +179,7 @@ public class ProductController {
         Clock product = new Clock (productName, productPrice, productMaker, productSize, productColor, productMaterial, productDescription, productType, productMechanism, productGlass, productDialType, productWaterResistance, category);
         productService.save(product);
         savePhoto(productPictureList, product);
-        return "redirect:/productsWithCategory-" + categoryId ;
+        return "redirect:/productsWithCategory-" + categoryId + "-Page-0";
     }
 
 

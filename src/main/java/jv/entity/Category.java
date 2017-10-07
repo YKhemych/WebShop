@@ -21,7 +21,7 @@ public class Category {
     private String name;
     private int idFatherCategoryes;
     @JsonIgnore
-    @OneToMany(fetch =FetchType.LAZY, mappedBy = "category")
+    @OneToMany(cascade = CascadeType.REMOVE, fetch =FetchType.LAZY, mappedBy = "category")
     private List<Product> products;
 
     public Category(String name) {

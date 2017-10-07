@@ -27,5 +27,8 @@ public interface UserDAO extends JpaRepository<User, Integer> {
     @Query("from User u left join fetch u.orderProducts where u.username = :name")
     User findByNameWithOrder(@Param("name") String name);
 
+    @Modifying
+    @Query("update User u set u.email = :email where u.username = :userName")
+    void editEmailAddress(@Param("userName")String userName, @Param("email")String email);
 
 }

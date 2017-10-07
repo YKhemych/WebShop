@@ -7,9 +7,9 @@
             <div class="row">
                 <div class="col-md-12 margin-top-10px row">
 
-                    <div class="padding-0-10px border-bottom-blond-grey col-md-12">
-                        <h1 class="float-left font-size-25px"> ${fatherCategory.name} </h1>
-                        <h1 id="activeCategoryId" class="visibility-hidden float-left margin-0">${fatherCategory.id}</h1>
+                    <div class="padding-0-10px border-bottom-blond-grey col-md-12 col-xs-12">
+                        <h1 class="float-left font-size-25px col-md-12 col-xs-12"> ${fatherCategory.name} </h1>
+                        <h1 id="activeCategoryId" class="visibility-hidden float-left margin-0" style="font-size: 0px">${fatherCategory.id}</h1>
                     </div>
 
                     <div id="allProductsOnProductPage" class="padding-10px-0 col-md-12">
@@ -52,10 +52,10 @@
                                     <li><a href="productsWithCategory-${fatherCategory.id}-Page-0" class="text-danger"> 1 </a></li>
                                 </c:if>
                                 <c:if test="${productPage > 1}">
-                                    <li><a href="productsWithCategory-${fatherCategory.id}-Page-${productPage - 3}" class="text-danger"> ${productPage - 1} </a></li>
+                                    <li><a href="productsWithCategory-${fatherCategory.id}-Page-${productPage - 2}" class="text-danger"> ${productPage - 1} </a></li>
                                 </c:if>
                                 <c:if test="${productPage > 0}">
-                                    <li><a href="productsWithCategory-${fatherCategory.id}-Page-${productPage - 2}" class="text-danger"> ${productPage} </a></li>
+                                    <li><a href="productsWithCategory-${fatherCategory.id}-Page-${productPage - 1}" class="text-danger"> ${productPage} </a></li>
                                 </c:if>
 
                                 <li class="active"><a id="activePage" href="" class="color-red background-red">${productPage + 1}</a></li>

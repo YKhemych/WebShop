@@ -5,7 +5,7 @@
 
 <div class="container-fluid">
     <div class="row centered">
-        <div class="col-md-10 col-md-offset-1 row">
+        <div class="col-md-10 col-md-offset-1 row" style="min-height: 600px">
             <div class="page-header padding-left-20px">
                 <h2>Admin Page</h2>
             </div>

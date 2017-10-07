@@ -18,5 +18,5 @@ public interface UserService {
     public UserDetails loadUserByUsername(String username);
     void editDeliveryAddress(String username, String name, String surname, String country,
                              String city, String street, int zipCode, String phone);
-
+    void editEmailAddress(String userName, String email);
 }

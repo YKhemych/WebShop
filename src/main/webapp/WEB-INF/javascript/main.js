@@ -19,15 +19,26 @@ $('#registerButton').click(function () {
     if (password == confPassword){
         var user = {username: username, email: email, password: password};
         var jsonUser = JSON.stringify(user);
-
+        $('#errorInPassword').empty();
         $.ajax({
             url: '/saveUser',
             type: 'post',
             contentType: 'application/json',
             data : jsonUser,
-            success : function () {
-                alert("ok");
-                document.getElementById("closeRegistration").click();
+            success : function (result) {
+                console.log(result);
+                if (result == ""){
+                    $('#regUsername').val('');
+                    $('#regEmail').val('');
+                    $('#regPassword').val('');
+                    $('#conPassword').val('');
+                    document.getElementById("closeRegistration").click();
+                }else{
+                    if (result == "username"){
+                        $('#divForErrorUserName').append($('<p/>', {class: "margin-0", text: "This userName is present"}));
+                    }
+                }
+
             },
             error : function () {
                 alert("!!!!");
@@ -35,7 +46,7 @@ $('#registerButton').click(function () {
         });
 
     }else {
-        $('#divRegistrationUser').append($('<p/>', {class: "padding-left-20px", text: "Помилка в паролі"}));
+        $('#divForErrorPassword').append($('<p/>', {id: "errorInPassword",class: "margin-0", text: "Password don`t match"}));
     }
 
 });
@@ -43,6 +54,8 @@ $('#registerButton').click(function () {
 $('#loginButton').click(function () {
     var $form = $('#loginform');
     $form.submit();
+
+
 });
 
 var numbOfClicksToTheMainCategory = 0;
@@ -314,12 +327,9 @@ $(document).ready(function selectProduct() {
     });
 });
 
-// $('#selectProductArea').click(function () {
-//     var products = [{id: 1,text: "dasfds"}, {id: 2,text: "4fvrd"}, {id: 3,text: "vreva"}, {id: 4,text: " cx"}];
-//     $('.js-example-basic-multiple').select2({
-//         data: products
-//     });
-// });
+
+
+
 
 
 

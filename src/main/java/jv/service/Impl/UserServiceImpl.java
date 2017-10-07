@@ -52,4 +52,8 @@ public class UserServiceImpl implements UserService,UserDetailsService {
     public void editDeliveryAddress(String username, String name, String surname, String country, String city, String street, int zipCode, String phone) {
         userDAO.editDeliveryAddress(username, name, surname, country, city, street, zipCode, phone);
     }
+
+    public void editEmailAddress(String userName, String email) {
+        userDAO.editEmailAddress(userName, email);
+    }
 }
