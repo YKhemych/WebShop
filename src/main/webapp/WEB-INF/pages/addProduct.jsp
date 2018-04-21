@@ -35,7 +35,7 @@
                     </div>
                     <form id="formForSaveProductPhoto" action="" method="post"
                           enctype="multipart/form-data" accept-charset="UTF-8">
-                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     </form>
                     <div id="productPhotoArea">
 

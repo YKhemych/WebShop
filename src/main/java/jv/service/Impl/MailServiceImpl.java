@@ -15,7 +15,7 @@ import javax.mail.internet.MimeMessage;
  * Created by user on 15.09.2017.
  */
 @Service
-public class MailServiceImpl implements MailService {
+public class MailServiceImpl implements MailService{
     @Autowired
     private JavaMailSender javaMailSender;
 

@@ -63,7 +63,7 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.8.8" />
           <element id="library" level="project" name="Maven: org.springframework:spring-websocket:4.3.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-messaging:4.3.3.RELEASE" />
-          <element id="file-copy" path="$MAVEN_REPOSITORY$/javax/validation/validation-api/1.1.0.FINAL/validation-api-1.1.0.Final.jar" output-file-name="validation-api-1.1.0.FINAL.jar" />
+          <element id="file-copy" path="$MAVEN_REPOSITORY$/javax/validation/validation-api/2.0.0.Final/validation-api-2.0.0.Final.jar" output-file-name="validation-api-2.0.0.FINAL.jar" />
         </element>
       </element>
       <element id="directory" name="META-INF">
