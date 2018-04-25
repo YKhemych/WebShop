@@ -30,7 +30,6 @@ public class Product {
     private String size;
     private String color;
     private String material;
-    @Column(length = 2550)
     private String description;
     private String type;
 
